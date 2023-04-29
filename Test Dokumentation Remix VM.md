@@ -249,7 +249,7 @@ Die Metadaten des Patienten, welche auf der Blockchain verankert werden sollen b
 {
 	"bool _activ": true,
 	"string _CID": "eb6bf42250d4da07032090a0a8b8107679ab92a1c8631ec54d0ff1e59575a011",
-	"string _public_key": "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAf0guvJXUv+Y55qQ2/nkQb1yiloGB0DV2 UdkHqNdsRhSDYL9vdx5NUE4/ffZV2+MEnsa2ZZ9LXDBiIycv7mkPaQIDAQAB",
+	"string _public_key": "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAf0guvJXUv+Y55qQ2/nkQb1yiloGB0DV2UdkHqNdsRhSDYL9vdx5NUE4/ffZV2+MEnsa2ZZ9LXDBiIycv7mkPaQIDAQAB",
 	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
 	"bytes32 _role": "0x72606200fac42b7dc86b75901d61ecfab2a4a1a6eded478b97a428094891abed"
 }
@@ -506,17 +506,114 @@ Das dritte Ethereum-Konto (0x17F..) war nicht in der Lage, die Klinik auf der Bl
 
 ## **Testfall ID 5 <a name="testfall5"></a>**
 
-### Testbeschreibung
+### **Testbeschreibung**
 
-### Input-Daten
+Der intelligente Vertrag muss Anpassung an den Metadaten der digitalen Identität ermöglichen, falls sich diese durch die Zeit ändern. Die Anpassung an den Metadaten soll nur durch das entsprechende Subjekt selbst möglich sein. Eine Ausnahme bildet der Hashwert des verifizierten Identitätsdokuments. Dies sollte nur durch den Admin bei einem unabhängigen Prüfer und durch den unabhängigen Prüfer bei einem Patienten, Arzt oder Klinik möglich sein.
 
-### Erwartetes Ergebnis
+### **Input-Daten**
 
-### Output-Daten
+Unabhängiger Prüfer:	*0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2*
 
-### Logs/Events
+Patient:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
 
-### Resulat
+Drittes Ethereum-Konto ohne Zulassung: *0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
+
+Folgende Metadaten des Patienten sollen angepasst werden.
+
+Hashwert des Identitätsdokumentes (CID):
+``` json
+{
+	"previousCID": "eb6bf42250d4da07032090a0a8b8107679ab92a1c8631ec54d0ff1e59575a011",
+	"newCID": "62580fbe76142049a57602d3d4bbb9b2948f32a7ff48572ce1dc6c8b41100e3c"
+}
+```
+Public Key:
+``` json
+{
+	"previousPublic_key": "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAf0guvJXUv+Y55qQ2/nkQb1yiloGB0DV2 UdkHqNdsRhSDYL9vdx5NUE4/ffZV2+MEnsa2ZZ9LXDBiIycv7mkPaQIDAQAB",
+	"newPublic_key": "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIsiCaua6zIUQnK1KKdY6YFgVXOvXH+4baJ/M/ITmygbsFWfecoAoLFvO2V6jvi5wzE/FK4+zQ+I5md3uPKvn0CAwEAAQ=="
+}
+```
+Aktivitätsstatus:
+``` json
+{
+	"previousActiv": true,
+	"newActiv": false
+}
+```
+
+### **Erwartetes Ergebnis**
+
+Die einzelnen Identitäten können ihre **eigenen** Metadaten anpassen und keine anderen. Der Hashwert des verifizierten Identitätsdokuments kann nur durch eine höhere Hierarchiestufe angepasst werden, sprich Vertrags-Admin oder unabhängiger Prüfer.
+
+### **Output-Daten**
+
+**Anpassung des CID**
+
+Anpassungsversuch durch Patient selbst:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "AccessControl: account 0x4b20993bc481177ec7e8f571cecae8a9e22c02db is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1e
+```
+
+Anpassungsversuch durch unabhängigen Prüfer:
+```json
+{
+	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"string _new_CID": "62580fbe76142049a57602d3d4bbb9b2948f32a7ff48572ce1dc6c8b41100e3c"
+}
+```
+
+**Anpassung des Public Key**
+
+Anpassungsversuch durch drittes Ethereum-Konto:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Unauthorized access".
+```
+Anpassungsversuch durch Patienten selbst:
+```json
+{
+	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"string _new_public_key": "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIsiCaua6zIUQnK1KKdY6YFgVXOvXH+4baJ/M/ITmygbsFWfecoAoLFvO2V6jvi5wzE/FK4+zQ+I5md3uPKvn0CAwEAAQ=="
+}
+```
+
+**Anpassung des Aktivitätsstatus**
+
+Anpassungsversuch durch drittes Ethereum-Konto:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Unauthorized access".
+```
+Anpassungsversuch durch Patienten selbst:
+```json
+{
+	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"bool _new_activ": false
+}
+```
+
+**Übersicht aller Änderungen in den Stammdaten**
+```json
+{
+	"0": "uint256: id 0",
+	"1": "uint256: verified_by 0",
+	"2": "bool: activ false",
+	"3": "string: CID 62580fbe76142049a57602d3d4bbb9b2948f32a7ff48572ce1dc6c8b41100e3c",
+	"4": "string: public_key MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIsiCaua6zIUQnK1KKdY6YFgVXOvXH+4baJ/M/ITmygbsFWfecoAoLFvO2V6jvi5wzE/FK4+zQ+I5md3uPKvn0CAwEAAQ==",
+	"5": "address: identity_address 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"6": "bytes32: role 0x72606200fac42b7dc86b75901d61ecfab2a4a1a6eded478b97a428094891abed"
+}
+```
+
+### **Logs/Events**
+
+Keine Logs & Events bei diesem Testfall.
+
+### **Resulat**
+
+Der Patient (0x4B2..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestuffe, den unabhängigen Prüfer (0xAb8..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrags aufgrund fehlender Autorisierung zurückgewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -525,17 +622,114 @@ Das dritte Ethereum-Konto (0x17F..) war nicht in der Lage, die Klinik auf der Bl
 
 ## **Testfall ID 6 <a name="testfall6"></a>**
 
-### Testbeschreibung
+### **Testbeschreibung**
 
-### Input-Daten
+Der intelligente Vertrag muss registrierten Ärzten und Kliniken die Möglichkeit geben, einen NFT-Token zu erstellen, welcher einen Befund darstellt. Der Inhaber des Tokens sollte dabei nur ein Patient sein können. Der URI-Link des NFT muss dabei ein IPFS CID sein können, damit keine Daten direkt auf der Blockchain gespeichert werden, jedoch die Datenintegrität, wie im Lösungsdesign beschrieben, sichergestellt werden kann.
 
-### Erwartetes Ergebnis
+### **Input-Daten**
 
-### Output-Daten
+**Metadaten auf IPFS**
 
-### Logs/Events
+Folgendes Metadaten JSON File wurde auf IFPS registriert:
+```json
+{
+    "title": "Example Metadata",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Identifies the asset to which this NFT represents"
+        },
+        "description": {
+            "type": "string",
+            "description": "Describes the asset to which this NFT represents"
+        },
+        "image": {
+            "type": "string",
+            "description": "http://localhost:8080",
+            "hash": "2e414fb9d721f45a2797887de311b065cd4e93be8d06d9bad9ccf4efd0c4dcfc"
+        }
+    }
+}
+```
+IPFS hat folgenden CID Hash als Zugangslink für das hochgeladene File generiert:
 
-### Resulat
+```
+QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag
+```
+
+**Ethereum-Konten**
+
+Klinik:		*0x617F2E2fD72FD9D5503197092aC168c91465E7f2*
+
+Patient:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
+
+Drittes Ethereum-Konto:		*0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
+
+### **Erwartetes Ergebnis**
+
+Ärzte und Kliniken sind in der Lage, einen neuen Token auf der Blockchain zu erstellen, welcher einen Befund darstellt. Der Versuch anderer Ethereum-Adresse als jener mit den Rollen «Physician» und «Hospital» wird vom intelligenten Vertrag aufgrund der fehlenden Rolle zurückgewiesen. Der Inhaber des Tokens kann dabei nur ein Patient sein, ansonsten wird der Token von der Blockchain nicht akzeptiert. Als URI-Link des Tokens wird ein IPFS-Link akzeptiert, womit die Datenintegrität gemäss Design, sichergestellt wird. Keine Befunddaten werden auf der Blockchain gespeichert.
+
+### **Output-Daten**
+
+Versuch der Registrierung eines Tokens durch einen Dritten für einen Patienten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only Physician and Hospitals can mint new Token"
+```
+
+Versuch der Registrierung eines Tokens des Patienten für sich selbst:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only Physician and Hospitals can mint new Token"
+```
+
+Versuch der Registrierung eines Tokens durch die Klinik für einen Dritten ohne die Rolle "Patient":
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Mint only possible for patients"
+```
+
+Versuch der Registrierung eines Tokens durch die Klinik für sich selbst:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Mint only possible for patients"
+```
+
+Versuch der Registrierung eines Tokens durch die Klinik für einen Patienten:
+```json
+{
+	"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"string uri": "QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag"
+}
+```
+
+### **Logs/Events**
+
+Emittierter Event, dass ein neuer Token ausgegeben wurde:
+```json
+[
+	{
+		"from": "0xD7ACd2a9FD159E69Bb102A1ca21C9a3e3A5F771B",
+		"topic": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+		"event": "Transfer",
+		"args": {
+			"0": "0x0000000000000000000000000000000000000000",
+			"1": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"2": "0",
+			"from": "0x0000000000000000000000000000000000000000",
+			"to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"tokenId": "0"
+		}
+	}
+]
+
+```
+
+### **Resulat**
+
+Die Ausgabe eines neuen Befundes (Tokens) ist nur durch eine Klinik oder Arzt für einen Patient möglich, alle anderen Szenarien werden vom intelligenten Vertrag zurückgewiesen. Ausserdem wird der IPFS CID Hash als URI-Link akzeptiert und auf der Blockchain erfolgreich registriert. Der intelligente Vertrag emittiert ebenfalls einen Event, dass ein neuer Token kreiert wurde, dies wird daran erkannt, dass die Herkunft-Adresse des Token 0x000 ist. 
+
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -589,6 +783,29 @@ Das dritte Ethereum-Konto (0x17F..) war nicht in der Lage, die Klinik auf der Bl
 ### Erwartetes Ergebnis
 
 ### Output-Daten
+
+Rückgabe von IPFS Gateway nach Eingabe des IPFS CID Hash:
+```json
+{
+    "title": "Example Metadata",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Identifies the asset to which this NFT represents"
+        },
+        "description": {
+            "type": "string",
+            "description": "Describes the asset to which this NFT represents"
+        },
+        "image": {
+            "type": "string",
+            "description": "http://localhost:8080",
+            "hash": "2e414fb9d721f45a2797887de311b065cd4e93be8d06d9bad9ccf4efd0c4dcfc"
+        }
+    }
+}
+```
 
 ### Logs/Events
 
