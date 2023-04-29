@@ -613,7 +613,7 @@ Keine Logs & Events bei diesem Testfall.
 
 ### **Resulat**
 
-Der Patient (0x4B2..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestuffe, den unabhängigen Prüfer (0xAb8..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrags aufgrund fehlender Autorisierung zurückgewiesen.
+Der Patient (0x4B2..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestuffe, den unabhängigen Prüfer (0xAb8..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrags aufgrund fehlender Autorisierung und Zulassung zurückgewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -730,7 +730,6 @@ Emittierter Event, dass ein neuer Token ausgegeben wurde:
 
 Die Ausgabe eines neuen Befundes (Tokens) ist nur durch eine Klinik oder Arzt für einen Patient möglich, alle anderen Szenarien werden vom intelligenten Vertrag zurückgewiesen. Ausserdem wird der IPFS CID Hash als URI-Link akzeptiert und auf der Blockchain erfolgreich registriert. Der intelligente Vertrag emittiert ebenfalls einen Event, dass ein neuer Token kreiert wurde, dies wird daran erkannt, dass die Herkunft-Adresse des Token 0x000 ist. 
 
-
 - [x] Bestanden
 - [ ] Fehlgeschlagen
 
@@ -738,17 +737,72 @@ Die Ausgabe eines neuen Befundes (Tokens) ist nur durch eine Klinik oder Arzt f�
 
 ## **Testfall ID 7 <a name="testfall7"></a>**
 
-### Testbeschreibung
+### **Testbeschreibung**
 
-### Input-Daten
+Der intelligente Vertrag soll den Genehmigungsprozess abbilden können, welchen Kliniken und Ärzten der Patient Zugriff auf seine Daten gewährt. Dabei können im intelligenten Vertrag die Genehmigung durch Ärzte und Kliniken angefragt werden, sowie der Patient die Anfragen genehmigen oder die Genehmigung widerrufen.
 
-### Erwartetes Ergebnis
+### **Input-Daten**
 
-### Output-Daten
+**Ethereum-Konten**
 
-### Logs/Events
+Konten welchen genutzt werden, um die verschieden Genehmigungen anzufragen:
 
-### Resulat
+Klinik:		*0x617F2E2fD72FD9D5503197092aC168c91465E7f2*
+
+Arzt:		*0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB*
+
+Patient:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
+
+Drittes Ethereum-Konto:		*0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
+
+
+### **Erwartetes Ergebnis**
+
+Ärzte und Kliniken sind in der Lage, den Zugriff auf die Patientendaten anzufragen. Der Patient kann die Anfragen Genehmigung sowie bestehende Genehmigungen widerrufen. Die Anfrage nach einem Zugriff ist nur für die Rollen «Physician» und «Hospital» für eine Identität mit der Rolle «Patient» möglich. Die Genehmigung und Widerrufung sind nur für einen Patienten für sich selbst möglich.
+
+### **Output-Daten**
+
+**Anfrage der Genehmigung**
+
+Versuch der Anfrage einer Genehmigung eines Dritten an einen Patienten
+```
+
+```
+
+Versuch der Anfrage einer Genehmigung eines Dritten an einen Arzt
+```
+
+```
+
+Versuch der Anfrage einer Genehmigung eines Arztes an einen Dritten
+```
+
+```
+
+Versuch der Anfrage einer Genehmigung einer Klinik an einen Dritten
+```
+
+```
+
+Versuch der Anfrage einer Genehmigung eines Arztes an einen Patienten
+```
+
+```
+
+Versuch der Anfrage einer Genehmigung einer Klinik an einen Patienten
+```
+
+```
+
+**Erteilung der Genehmigung**
+
+
+**Widerrufung der Genehmigung**
+
+
+### **Logs/Events**
+
+### **Resulat**
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
