@@ -758,51 +758,255 @@ Drittes Ethereum-Konto:		*0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
 
 ### **Erwartetes Ergebnis**
 
-Ärzte und Kliniken sind in der Lage, den Zugriff auf die Patientendaten anzufragen. Der Patient kann die Anfragen Genehmigung sowie bestehende Genehmigungen widerrufen. Die Anfrage nach einem Zugriff ist nur für die Rollen «Physician» und «Hospital» für eine Identität mit der Rolle «Patient» möglich. Die Genehmigung und Widerrufung sind nur für einen Patienten für sich selbst möglich.
+Ärzte und Kliniken sind in der Lage, den Zugriff auf die Patientendaten anzufragen. Der Patient kann die Anfragen genehmigen, sowie Genehmigungen widerrufen. Die Anfrage nach einem Zugriff ist nur für die Rollen «Physician» und «Hospital» für eine Identität mit der Rolle «Patient» möglich. Die Genehmigung und Widerrufung sind nur für einen Patienten möglich.
 
 ### **Output-Daten**
 
 **Anfrage der Genehmigung**
 
-Versuch der Anfrage einer Genehmigung eines Dritten an einen Patienten
+Versuch der Anfrage einer Genehmigung eines Dritten an einen Patienten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital can request approval."
 ```
 
+Versuch der Anfrage einer Genehmigung eines Dritten an einen Arzt:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital can request approval."
 ```
 
-Versuch der Anfrage einer Genehmigung eines Dritten an einen Arzt
+Versuch der Anfrage einer Genehmigung eines Arztes an einen Dritten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Patient can be requested for approvals."
 ```
 
+Versuch der Anfrage einer Genehmigung eines Arztes an einen Patienten:
+```json
+{
+	"address _patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db"
+}
 ```
 
-Versuch der Anfrage einer Genehmigung eines Arztes an einen Dritten
+Versuch der Anfrage einer Genehmigung einer Klinik an einen Dritten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Patient can be requested for approvals."
 ```
 
-```
-
-Versuch der Anfrage einer Genehmigung einer Klinik an einen Dritten
-```
-
-```
-
-Versuch der Anfrage einer Genehmigung eines Arztes an einen Patienten
-```
-
-```
-
-Versuch der Anfrage einer Genehmigung einer Klinik an einen Patienten
-```
-
+Versuch der Anfrage einer Genehmigung einer Klinik an einen Patienten:
+```json
+{
+	"address _patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db"
+}
 ```
 
 **Erteilung der Genehmigung**
 
+Versuch der Erteilung der Genehmigung durch einen Dritten an einen Patienten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital can be subject to approval."
+```
+
+Versuch der Erteilung der Genehmigung durch einen Dritten an einen Arzt:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Patient can grant approvals."
+```
+
+Versuch der Erteilung der Genehmigung durch einen Arzt an einen Dritten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital can be subject to approval."
+```
+
+Versuch der Erteilung der Genehmigung durch einen Arzt an einen Patienten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital can be subject to approval."
+```
+
+Versuch der Erteilung der Genehmigung durch einen Patienten an einen Dritten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital can be subject to approval."
+```
+
+Versuch der Erteilung der Genehmigung durch einen Patienten an einen Arzt:
+```json
+{
+	"address _identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+}
+```
+
+Versuch der Erteilung der Genehmigung durch einen Patienten an eine Klinik:
+```json
+{
+	"address _identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+}
+```
 
 **Widerrufung der Genehmigung**
 
+Versuch der Widerrufung der Genehmigung durch einen Dritten für einen Patienten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
+```
+
+Versuch der Widerrufung der Genehmigung durch einen Dritten für einen Arzt:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Patient revoke approvals."
+```
+
+Versuch der Widerrufung der Genehmigung durch einen Arzt für einen Dritten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
+```
+
+Versuch der Widerrufung der Genehmigung durch einen Arzt für einen Patienten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
+```
+
+Versuch der Widerrufung der Genehmigung durch einen Patienten für einen Dritten:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
+```
+
+Versuch der Widerrufung der Genehmigung durch einen Patienten für einen Arzt:
+```json
+{
+	"address _identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+}
+```
+
+Versuch der Widerrufung der Genehmigung durch einen Patienten für eine Klinik:
+```json
+{
+	"address _identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+}
+```
 
 ### **Logs/Events**
 
+**Anfrage der Genehmigung**
+
+Emittierter Event, bei der Anfrage einer Genehmigung durch einen Arzt an einen Patienten:
+```json
+[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0x8f491ef69bf5d5051c16fff776856d82887c8230d1125ef92ce9f2aaf05ed4e5",
+		"event": "ApprovalRequested",
+		"args": {
+			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"1": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
+			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"_identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+		}
+	}
+]
+```
+
+Emittierter Event, bei der Anfrage einer Genehmigung durch eine Klinik an einen Patienten:
+```json
+[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0x8f491ef69bf5d5051c16fff776856d82887c8230d1125ef92ce9f2aaf05ed4e5",
+		"event": "ApprovalRequested",
+		"args": {
+			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"1": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
+			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"_identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+		}
+	}
+]
+```
+
+**Erteilung der Genehmigung**
+
+Emittierter Event, bei der Erteilung einer Genehmigung durch einen Patienten an einen Arzt:
+```json
+[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0x744a29cbc651d1297d6bffa0d1e6b58a94c6f9665708be83fa0c115d805af53a",
+		"event": "ApprovalGranted",
+		"args": {
+			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"1": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
+			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"_identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+		}
+	}
+]
+```
+
+Emittierter Event, bei der Erteilung einer Genehmigung durch einen Patienten an eine Klinik:
+```json
+[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0x744a29cbc651d1297d6bffa0d1e6b58a94c6f9665708be83fa0c115d805af53a",
+		"event": "ApprovalGranted",
+		"args": {
+			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"1": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
+			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"_identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+		}
+	}
+]
+```
+
+**Widerrufung der Genehmigung**
+
+Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten an einen Arzt:
+```json
+[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0x97a94ee714dc2c5c1889f6fe8e8909a95e0307c4b272c7df374bf76582099f87",
+		"event": "ApprovalRevoked",
+		"args": {
+			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"1": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
+			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"_identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+		}
+	}
+]
+```
+
+Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten an eine Klinik:
+```json
+[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0x97a94ee714dc2c5c1889f6fe8e8909a95e0307c4b272c7df374bf76582099f87",
+		"event": "ApprovalRevoked",
+		"args": {
+			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"1": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
+			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"_identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+		}
+	}
+]
+```
+
 ### **Resulat**
+
+Ärzte und Kliniken sind in der Lage, den Zugriff auf die Patientendaten anzufragen. Der Patient kann die Anfragen genehmigen, sowie Genehmigungen widerrufen. Die Anfrage nach einem Zugriff ist nur für die Rollen «Physician» und «Hospital» für eine Identität mit der Rolle «Patient» möglich. Die Genehmigung und Widerrufung sind nur für einen Patienten möglich.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -811,17 +1015,61 @@ Versuch der Anfrage einer Genehmigung einer Klinik an einen Patienten
 
 ## **Testfall ID 8 <a name="testfall8"></a>**
 
-### Testbeschreibung
+### **Testbeschreibung**
 
-### Input-Daten
+Der intelligente Vertrag soll die Genehmigungen in einer Tabelle erfassen, welche abgefragt werden können, um den aktuellen Status der Genehmigung zwischen einem Patienten und einem Arzt/einer Klinik zu erfahren.
 
-### Erwartetes Ergebnis
+### **Input-Daten**
 
-### Output-Daten
+Folgende Genehmigungen wurden auf dem intelligenten Vertrag registriert:
+```json
+	"Genehmigung 1": {
+		"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"_identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
+		"bool": false
+	}
 
-### Logs/Events
+	"Genehmigung 2": {
+		"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"_identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
+		"bool": true
+	}
+```
 
-### Resulat
+### **Erwartetes Ergebnis**
+
+Der aktuelle Status der Genehmigungen kann aus der Genehmigungs-Tabelle abgelesen werden.
+
+### **Output-Daten**
+
+Abfrage der Genehmigung zwischen dem Patienten (0x4B2..) und dem Arzt (0x787):
+```json
+{
+	"0": "bool: false"
+}
+```
+
+Abfrage der Genehmigung zwischen dem Patienten (0x4B2..) und der Klinik (0x617):
+```json
+{
+	"0": "bool: true"
+}
+```
+
+Abfrage einer Genehmigung, welche nicht im Genehmigungsprozess registriert wurde, zwischen zwei nicht auf der Blockchain registrierten Konten. Konto (0x17F) und Konto (0x5c6).
+```json
+{
+	"0": "bool: false"
+}
+```
+
+### **Logs/Events**
+
+Keine Logs oder Events bei diesem Testfall.
+
+### **Resulat**
+
+Der aktuelle Status der registrierten Genehmigungen konnte korrekt von der Blockchain abgefragt werden. Für nicht registrierte Genehmigung wird der Standardwert "false" zurückgegeben.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -830,15 +1078,87 @@ Versuch der Anfrage einer Genehmigung einer Klinik an einen Patienten
 
 ## **Testfall ID 9 <a name="testfall9"></a>**
 
-### Testbeschreibung
+### **Testbeschreibung**
 
-### Input-Daten
+Innerhalb des intelligenten Vertrags kann nach allen Befunden (Tokens) eines spezifischen Patienten gefiltert werden und die Token URIs können abgefragt werden.
 
-### Erwartetes Ergebnis
+### **Input-Daten**
 
-### Output-Daten
+Es existieren zwei Tokens für den Patienten (0x4B2..):
+```json
+	"Token 1": {
+		"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"string uri": "QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag"
+	}
 
-Rückgabe von IPFS Gateway nach Eingabe des IPFS CID Hash:
+	"Token 2": {
+		"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"string uri": "QmabPUhqttoLfRueCjRroCMFUNCaGcmWmKWfffMkzx9dAE"
+	}
+```
+
+### **Erwartetes Ergebnis**
+
+Es kann nach allen Befunden (Tokens) zu einem Patienten gefiltert werden und die entsprechenden Token URI können abgefragt werden.
+
+### **Output-Daten**
+
+**Summe aller Token**
+
+Zuerst werden mit der Funktion `balanceOf` angezeigt, wie viel Token die spezifische Adresse des Patienten (0x4B2..) besitzt:
+```json
+{
+	"0": "uint256: 2"
+}
+```
+
+**Filtern der relevanten Token-IDs**
+
+Die Funktion `tokenOfOwnerByIndex` gibt die Token-ID zurück, die dem dem Patienten an einem gegebenen Index **seiner** Tokenliste gehört. Die Funktion `balanceOf` gibt die Länge des Index an, welcher mit `0` startet:
+
+Index-Position 0
+```json
+{
+	"0": "uint256: 0"
+}
+```
+
+Index-Position 1
+```json
+{
+	"0": "uint256: 1"
+}
+```
+
+Index-Position 2
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "ERC721Enumerable: owner index out of bounds"
+```
+
+**Filtern nach der Token-URI**
+
+Mit der Funktion `tokenURI` kann die Token-URI gegeben einer Token-ID abgerufen werden:
+
+Token-ID 0
+```json
+{
+	"0": "string: QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag"
+}
+```
+
+Token-ID 1
+```json
+{
+	"0": "string: QmabPUhqttoLfRueCjRroCMFUNCaGcmWmKWfffMkzx9dAE"
+}
+```
+
+**Abfrage der Metadaten mit Token-URI auf IPFS**
+
+Rückgabe vom IPFS Gateway nach Eingabe des IPFS CID Hash (Token-URI):
+
+Token-URI 0
 ```json
 {
     "title": "Example Metadata",
@@ -861,9 +1181,36 @@ Rückgabe von IPFS Gateway nach Eingabe des IPFS CID Hash:
 }
 ```
 
-### Logs/Events
+Token-URI 1
+```json
+{
+    "title": "Example Metadata 2",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Identifies the asset to which this NFT represents"
+        },
+        "description": {
+            "type": "string",
+            "description": "Describes the asset to which this NFT represents"
+        },
+        "image": {
+            "type": "string",
+            "description": "http://localhost:8080",
+            "hash": "9ef7420e2ed340a69a50ae128a3f5b27ace14b8526dc94d99a7e18bd9d7a21b0"
+        }
+    }
+}
+```
 
-### Resulat
+### **Logs/Events**
+
+Keine Logs oder Events bei diesem Testfall.
+
+### **Resulat**
+
+Es war möglich nach den einzelnen Tokens des Patienten (0x4B2..) zu filtern und die entsprechenden Token-URIs abzurufen. In diesem Testing wurden die einzelnen Funktionen, welche dazu nötig sind, seperat durchgeführt und dokumentiert. Es wäre jedoch möglich die Abfrage der einzelnen Funktionen durch Code zu automatisieren (z.B. JavaScript). Das IPFS-Gateway ausserhalb der Blockchain gibt ebenfalls, gegeben der Token-URIs, die korrekten Metadaten-Files zurück.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -872,17 +1219,69 @@ Rückgabe von IPFS Gateway nach Eingabe des IPFS CID Hash:
 
 ## **Testfall ID 10 <a name="testfall10"></a>**
 
-### Testbeschreibung
+### **Testbeschreibung**
 
-### Input-Daten
+Der Patient soll in der Lage sein, seine eigenen Befunde (Tokens) zu löschen.
 
-### Erwartetes Ergebnis
+### **Input-Daten**
 
-### Output-Daten
+Es existieren zwei Tokens für den Patienten (0x4B2..):
+```json
+	"Token 1": {
+		"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"string uri": "QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag"
+	}
 
-### Logs/Events
+	"Token 2": {
+		"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"string uri": "QmabPUhqttoLfRueCjRroCMFUNCaGcmWmKWfffMkzx9dAE"
+	}
+```
+Der zweite Token sollte vernichtet werden.
 
-### Resulat
+### **Erwartetes Ergebnis**
+
+Der Patient kann seine eigenen registrierten Befunde (Tokens) vernichten.
+
+### **Output-Daten**
+
+Der Versurch, den Token durch einen Arzt (0x787..) zu löschen:
+```
+The transaction has been reverted to the initial state.
+Reason provided by the contract: "ERC721: caller is not token owner or approved"
+```
+
+Der Versurch, den Token durch den Patient selbst (0x4B2..) zu löschen:
+```json
+{
+	"uint256 tokenId": "1"
+}
+```
+
+### **Logs/Events**
+
+Emittierter Event, dass der Token vernichtet wurde:
+```json
+[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+		"event": "Transfer",
+		"args": {
+			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"1": "0x0000000000000000000000000000000000000000",
+			"2": "1",
+			"from": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"to": "0x0000000000000000000000000000000000000000",
+			"tokenId": "1"
+		}
+	}
+]
+```
+
+### **Resulat**
+
+Der Token konnte erfolgreich nur durch den Patienten selbst vernichtet werden. Der intelligente Vertrag emittiert ebenfalls einen Event, dass ein Token vernichtet wurde, dies wird daran erkannt, dass die Transfer-Adresse des Token 0x000 ist.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
