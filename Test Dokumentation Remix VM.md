@@ -1,4 +1,4 @@
-# **Test Dokumenation Remix VM**
+# **Test Dokumentation Remix VM**
 
 In diesem Markdown-Dokument werden die Ergebnisse der Tests auf der lokalen Remix VM dokumentiert. Der Test auf der lokalen VM ist gemäss dem beschriebenen Testvorgehen der erste Schritt bei der Validierung des entwickelten Artefakts. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 7.4 beschrieben.
 
@@ -20,7 +20,7 @@ In diesem Markdown-Dokument werden die Ergebnisse der Tests auf der lokalen Remi
 ## **Testfall ID 0 <a name="testfall0"></a>**
 
 ### **Testbeschreibung**
-Der Testfall 0 ist nicht im Anhang der Arbeit beschrieben und stellt per se auch keinen Funktionstest dar. Der intelligente Vertrag soll in diesem Schritt kompiliert und auf der lokalen Remix VM lauffähig sein.
+Der Testfall 0 ist nicht im Anhang der Arbeit beschrieben und stellt auch keinen Funktionstest dar. Der intelligente Vertrag soll in diesem Schritt kompiliert und auf der lokalen Remix VM lauffähig sein.
 
 ### **Input-Daten**
 Alle intelligenten Verträge gemäss beschriebener technischer Implementierung in Kapitel 7.3:
@@ -39,7 +39,7 @@ Ethereum-Konto mit welchem der Vertrag auf der lokalen Remix VM erstellt wird:	*
 
 ### **Erwartetes Ergebnis**
 
-Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf der lokalen Remix VM lauffähig. Ausserdem ist der Account, welcher den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem aufsetzen des Vertrages auf der lokalen Blockchain die Rollen gemäss Lösungsdesign kreirt. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
+Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf der lokalen Remix VM lauffähig. Ausserdem ist der Account, welcher den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem Aufsetzen des Vertrages auf der lokalen Blockchain die Rollen gemäss Lösungsdesign kreiert. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
 
 ### **Output-Daten**
 Rückgabe-Status nach kompilieren und erstellen des Hauptvertrags:
@@ -144,9 +144,9 @@ Bytes32 der Rolle der Klinik:
 ```
 
 
-### **Resulat**
+### **Resultat**
 
-Der Hauptvertrag wurde erfolgreich kompiliert und auf der lokalen Remix VM Instanz erstellt. Aus den Logs ist ersichtlich, dass dem Ethereum-Konto, welches den Vertrag erstellt hat, die Admin-Rolle (0x00) zugewiesen wurde. Ausserdem wurden die restlichen Rollen erstellt und der Rollen-Admin für Patienten, Ärzte und Kliniken ist vom Admin (0x00) zur Rolle vom unabhängigen Prüfer (0x0ce23) gewechselt.
+Der Hauptvertrag wurde erfolgreich kompiliert und auf der lokalen Remix VM Instanz erstellt. Aus den Logs ist ersichtlich, dass dem Ethereum-Konto, welches den Vertrag erstellt hat, die Admin-Rolle (0x00..) zugewiesen wurde. Ausserdem wurden die restlichen Rollen erstellt und der Rollen-Admin für Patienten, Ärzte und Kliniken ist vom Admin (0x00..) zur Rolle vom unabhängigen Prüfer (0x0ce..) gewechselt.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -166,7 +166,7 @@ Vertrags-Admin:	*0x5B38Da6a701c568545dCfcB03FcB875f56beddC4*
 
 Ethereum-Konto des neuen unabhängigen Prüfers:	*0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2*
 
-Drittes Ethereum-Konto, dass kein Vertrags-Admin ist:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
+Drittes Ethereum-Konto, welches kein Vertrags-Admin ist:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
 
 Die Metadaten des unabhängigen Prüfers, welche auf der Blockchain verankert werden sollen bei der Zulassung:
 ```json
@@ -180,17 +180,17 @@ Die Metadaten des unabhängigen Prüfers, welche auf der Blockchain verankert we
 
 ### **Erwartetes Ergebnis**
 
-Es wird ein instanziertes `struct` erwartet mit den Metadaten des unabhängigen Prüfers, womit der unabhängige Prüfer auf der Blockchain zugelassen ist. Die Ethereum-Adresse, welche den Vertrag kompiliert und erstellt hat, ist in der Lage, andere Ethereum-Adressen als unabhängige Prüfer zu registrieren und zuzulassen. Die auf der Blockchain gespeicherten Metadaten sind nicht mehr als der Hashwert des Identitätsdokuments, der «Public Key» sowie die Ethereum-Adresse. Der Versuch einer anderen Ethereum-Adresse als jener des Vertrag-Admin, einen unabhängigen Prüfer zuzulassen, wird vom intelligenten Vertrag aufgrund der fehlenden Admin-Rolle zurückgewiesen.
+Es wird ein instanziiertes `struct` erwartet mit den Metadaten des unabhängigen Prüfers, womit der unabhängige Prüfer auf der Blockchain zugelassen ist. Die Ethereum-Adresse, welche den Vertrag kompiliert und erstellt hat, ist in der Lage, andere Ethereum-Adressen als unabhängige Prüfer zu registrieren und zuzulassen. Die auf der Blockchain gespeicherten Metadaten sind nicht mehr als der Hashwert des Identitätsdokuments, der «Public Key» sowie die Ethereum-Adresse. Der Versuch einer anderen Ethereum-Adresse als jener des Vertrag-Admin, einen unabhängigen Prüfer zuzulassen, wird vom intelligenten Vertrag aufgrund der fehlenden Admin-Rolle zurückgewiesen.
 
 ### **Output-Daten**
 
-Output-Daten beim Instanzierungsversuch mit einem dritten Ethereum-Konto (kein Vertrags-Admin):
+Output-Daten bei der Instanziierung mit einem dritten Ethereum-Konto (kein Vertrags-Admin):
 ```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "AccessControl: account 0x4b20993bc481177ec7e8f571cecae8a9e22c02db is missing role 0x0000000000000000000000000000000000000000000000000000000000000000
 ```
 
-Output-Daten beim Instanzierungsversuch mit dem Vertrags-Admin
+Output-Daten bei der Instanziierung mit dem Vertrags-Admin
 ```json
 {
 	"0": "uint256: id 0",
@@ -203,7 +203,7 @@ Output-Daten beim Instanzierungsversuch mit dem Vertrags-Admin
 
 ### **Logs/Events**
 
-Emittierter Event nach dem erfolgreichen instanzieren durch den Vertrags-Admin, dass die Rolle des unabhängigen Prüfer gewährt wurde:
+Emittierter Event nach dem erfolgreichen Instanziieren durch den Vertrags-Admin, dass die Rolle des unabhängigen Prüfers gewährt wurde:
 ```json
 [
 	{
@@ -221,8 +221,8 @@ Emittierter Event nach dem erfolgreichen instanzieren durch den Vertrags-Admin, 
 	}
 ]
 ```
-### **Resulat**
-Das dritte Ethereum-Konto (0x4B2..) war nicht in der Lage, den unabhängigen Prüfer auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Admin-Rolle zurückgewiesen. Der Vertrags-Admin (0x5B3..) konnte den unabhängigen Prüfer (0xAb8..) erfolgreich instanzieren und alle relevanten Metadaten sind auf der Blockchain verankert. Ausserdem wurde der Ethereum-Adresse des unabhägigen Prüfers erfolgreich die neue Rolle zugewiesen.
+### **Resultat**
+Das dritte Ethereum-Konto (0x4B2..) war nicht in der Lage, den unabhängigen Prüfer auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Admin-Rolle zurückgewiesen. Der Vertrags-Admin (0x5B3..) konnte den unabhängigen Prüfer (0xAb8..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert. Ausserdem wurde der Ethereum-Adresse des unabhängigen Prüfers erfolgreich die neue Rolle zugewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -242,7 +242,7 @@ Unabhängiger Prüfer:	*0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2*
 
 Ethereum-Konto des neuen Patienten:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
 
-Drittes Ethereum-Konto, dass kein unabhängiger Prüfer ist:	*0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB*
+Drittes Ethereum-Konto, welches kein unabhängiger Prüfer ist:	*0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB*
 
 Die Metadaten des Patienten, welche auf der Blockchain verankert werden sollen bei der Zulassung:
 ``` json
@@ -272,13 +272,13 @@ Der Versuch einer anderen Ethereum-Adresse als jener mit der Rolle des unabhäng
 
 ### **Output-Daten**
 
-Output-Daten beim Instanzierungsversuch mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
+Output-Daten bei der Instanziierung mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
 ```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "AccessControl: account 0x78731d3ca6b7e34ac0f824c42a7cc18a495cabab is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09".
 ```
 
-Output-Daten beim Instanzierungsversuch mit dem unabhängigen Prüfer
+Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer
 ```json
 {
 	"0": "uint256: id 0",
@@ -293,7 +293,7 @@ Output-Daten beim Instanzierungsversuch mit dem unabhängigen Prüfer
 
 ### **Logs/Events**
 
-Emittierter Event nach dem erfolgreichen instanzieren durch den unabhängigen Prüfer, dass die Rolle des Patienten gewährt wurde:
+Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle des Patienten gewährt wurde:
 ```json
 {
 [
@@ -314,9 +314,9 @@ Emittierter Event nach dem erfolgreichen instanzieren durch den unabhängigen Pr
 }
 ```
 
-### **Resulat**
+### **Resultat**
 
-Das dritte Ethereum-Konto (0x787..) war nicht in der Lage, den Patienten auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte den Patienten (0x4B2..) erfolgreich instanzieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen referenzierung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse des Patienten erfolgreich die neue Rolle zugewiesen.
+Das dritte Ethereum-Konto (0x787..) war nicht in der Lage, den Patienten auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte den Patienten (0x4B2..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse des Patienten erfolgreich die neue Rolle zugewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -365,13 +365,13 @@ Der Versuch einer anderen Ethereum-Adresse als jener mit der Rolle des unabhäng
 
 ### **Output-Daten**
 
-Output-Daten beim Instanzierungsversuch mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
+Output-Daten bei der Instanziierung mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
 ```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "AccessControl: account 0x617f2e2fd72fd9d5503197092ac168c91465e7f2 is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea0"
 ```
 
-Output-Daten beim Instanzierungsversuch mit dem unabhängigen Prüfer
+Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer:
 ```json
 {
 	"0": "uint256: id 1",
@@ -386,7 +386,7 @@ Output-Daten beim Instanzierungsversuch mit dem unabhängigen Prüfer
 
 ### **Logs/Events**
 
-Emittierter Event nach dem erfolgreichen instanzieren durch den unabhängigen Prüfer, dass die Rolle des Arztes gewährt wurde:
+Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle des Arztes gewährt wurde:
 ```json
 [
 	{
@@ -405,9 +405,9 @@ Emittierter Event nach dem erfolgreichen instanzieren durch den unabhängigen Pr
 ]
 ```
 
-### **Resulat**
+### **Resultat**
 
-Das dritte Ethereum-Konto (0x617..) war nicht in der Lage, den Arzt auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte den Arzt (0x787..) erfolgreich instanzieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen referenzierung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse des Arztes erfolgreich die neue Rolle zugewiesen.
+Das dritte Ethereum-Konto (0x617..) war nicht in der Lage, den Arzt auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte den Arzt (0x787..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse des Arztes erfolgreich die neue Rolle zugewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -455,13 +455,13 @@ Der Versuch einer anderen Ethereum-Adresse als der mit der Rolle des unabhängig
 
 ### **Output-Daten**
 
-Output-Daten beim Instanzierungsversuch mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
+Output-Daten bei der Instanziierung mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
 ```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "AccessControl: account 0x17f6ad8ef982297579c203069c1dbffe4348c372 is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09"
 ```
 
-Output-Daten beim Instanzierungsversuch mit dem unabhängigen Prüfer
+Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer
 ```json
 {
 	"0": "uint256: id 2",
@@ -476,7 +476,7 @@ Output-Daten beim Instanzierungsversuch mit dem unabhängigen Prüfer
 
 ### **Logs/Events**
 
-Emittierter Event nach dem erfolgreichen instanzieren durch den unabhängigen Prüfer, dass die Rolle der Klinik gewährt wurde:
+Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle der Klinik gewährt wurde:
 ```json
 [
 	{
@@ -495,9 +495,9 @@ Emittierter Event nach dem erfolgreichen instanzieren durch den unabhängigen Pr
 ]
 ```
 
-### **Resulat**
+### **Resultat**
 
-Das dritte Ethereum-Konto (0x17F..) war nicht in der Lage, die Klinik auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte die Klinik (0x617..) erfolgreich instanzieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen referenzierung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse der Klinik erfolgreich die neue Rolle zugewiesen.
+Das dritte Ethereum-Konto (0x17F..) war nicht in der Lage, die Klinik auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte die Klinik (0x617..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse der Klinik erfolgreich die neue Rolle zugewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -550,13 +550,13 @@ Die einzelnen Identitäten können ihre **eigenen** Metadaten anpassen und keine
 
 **Anpassung des CID**
 
-Anpassungsversuch durch Patient selbst:
+Anpassungsversuch durch den Patient selbst:
 ```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "AccessControl: account 0x4b20993bc481177ec7e8f571cecae8a9e22c02db is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1e
 ```
 
-Anpassungsversuch durch unabhängigen Prüfer:
+Anpassungsversuch durch den unabhängigen Prüfer:
 ```json
 {
 	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
@@ -571,7 +571,7 @@ Anpassungsversuch durch drittes Ethereum-Konto:
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "Unauthorized access".
 ```
-Anpassungsversuch durch Patienten selbst:
+Anpassungsversuch durch den Patienten selbst:
 ```json
 {
 	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
@@ -586,7 +586,7 @@ Anpassungsversuch durch drittes Ethereum-Konto:
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "Unauthorized access".
 ```
-Anpassungsversuch durch Patienten selbst:
+Anpassungsversuch durch den Patienten selbst:
 ```json
 {
 	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
@@ -611,9 +611,9 @@ Anpassungsversuch durch Patienten selbst:
 
 Keine Logs & Events bei diesem Testfall.
 
-### **Resulat**
+### **Resultat**
 
-Der Patient (0x4B2..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestuffe, den unabhängigen Prüfer (0xAb8..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrags aufgrund fehlender Autorisierung und Zulassung zurückgewiesen.
+Der Patient (0x4B2..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestufe, den unabhängigen Prüfer (0xAb8..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrag aufgrund fehlender Autorisierung und Zulassung zurückgewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -726,7 +726,7 @@ Emittierter Event, dass ein neuer Token ausgegeben wurde:
 
 ```
 
-### **Resulat**
+### **Resultat**
 
 Die Ausgabe eines neuen Befundes (Tokens) ist nur durch eine Klinik oder Arzt für einen Patient möglich, alle anderen Szenarien werden vom intelligenten Vertrag zurückgewiesen. Ausserdem wird der IPFS CID Hash als URI-Link akzeptiert und auf der Blockchain erfolgreich registriert. Der intelligente Vertrag emittiert ebenfalls einen Event, dass ein neuer Token kreiert wurde, dies wird daran erkannt, dass die Herkunft-Adresse des Token 0x000 ist. 
 
@@ -739,13 +739,13 @@ Die Ausgabe eines neuen Befundes (Tokens) ist nur durch eine Klinik oder Arzt f�
 
 ### **Testbeschreibung**
 
-Der intelligente Vertrag soll den Genehmigungsprozess abbilden können, welchen Kliniken und Ärzten der Patient Zugriff auf seine Daten gewährt. Dabei können im intelligenten Vertrag die Genehmigung durch Ärzte und Kliniken angefragt werden, sowie der Patient die Anfragen genehmigen oder die Genehmigung widerrufen.
+Der intelligente Vertrag soll den Genehmigungsprozess abbilden können, welchen Kliniken und Ärzten der Patient Zugriff auf seine Daten gewährt. Dabei kann im intelligenten Vertrag die Genehmigung durch Ärzte und Kliniken angefragt werden, sowie der Patient die Anfragen genehmigen oder die Genehmigung widerrufen.
 
 ### **Input-Daten**
 
 **Ethereum-Konten**
 
-Konten welchen genutzt werden, um die verschieden Genehmigungen anzufragen:
+Konten welchen genutzt werden, um die verschiedenen Genehmigungen anzufragen:
 
 Klinik:		*0x617F2E2fD72FD9D5503197092aC168c91465E7f2*
 
@@ -1004,7 +1004,7 @@ Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten a
 ]
 ```
 
-### **Resulat**
+### **Resultat**
 
 Ärzte und Kliniken sind in der Lage, den Zugriff auf die Patientendaten anzufragen. Der Patient kann die Anfragen genehmigen, sowie Genehmigungen widerrufen. Die Anfrage nach einem Zugriff ist nur für die Rollen «Physician» und «Hospital» für eine Identität mit der Rolle «Patient» möglich. Die Genehmigung und Widerrufung sind nur für einen Patienten möglich.
 
@@ -1017,7 +1017,7 @@ Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten a
 
 ### **Testbeschreibung**
 
-Der intelligente Vertrag soll die Genehmigungen in einer Tabelle erfassen, welche abgefragt werden können, um den aktuellen Status der Genehmigung zwischen einem Patienten und einem Arzt/einer Klinik zu erfahren.
+Der intelligente Vertrag soll die Genehmigungen in einer Tabelle erfassen, welche abgefragt werden kann, um den aktuellen Status der Genehmigung zwischen einem Patienten und einem Arzt/einer Klinik zu erfahren.
 
 ### **Input-Daten**
 
@@ -1067,7 +1067,7 @@ Abfrage einer Genehmigung, welche nicht im Genehmigungsprozess registriert wurde
 
 Keine Logs oder Events bei diesem Testfall.
 
-### **Resulat**
+### **Resultat**
 
 Der aktuelle Status der registrierten Genehmigungen konnte korrekt von der Blockchain abgefragt werden. Für nicht registrierte Genehmigung wird der Standardwert "false" zurückgegeben.
 
@@ -1105,7 +1105,7 @@ Es kann nach allen Befunden (Tokens) zu einem Patienten gefiltert werden und die
 
 **Summe aller Token**
 
-Zuerst werden mit der Funktion `balanceOf` angezeigt, wie viel Token die spezifische Adresse des Patienten (0x4B2..) besitzt:
+Zuerst wird mit der Funktion `balanceOf` angezeigt, wie viele Token die spezifische Adresse des Patienten (0x4B2..) besitzt:
 ```json
 {
 	"0": "uint256: 2"
@@ -1114,7 +1114,7 @@ Zuerst werden mit der Funktion `balanceOf` angezeigt, wie viel Token die spezifi
 
 **Filtern der relevanten Token-IDs**
 
-Die Funktion `tokenOfOwnerByIndex` gibt die Token-ID zurück, die dem dem Patienten an einem gegebenen Index **seiner** Tokenliste gehört. Die Funktion `balanceOf` gibt die Länge des Index an, welcher mit `0` startet:
+Die Funktion `tokenOfOwnerByIndex` gibt die Token-ID zurück, die dem Patienten an einem gegebenen Index **seiner** Token-Liste gehört. Die Funktion `balanceOf` gibt die Länge des Index an, welcher mit `0` startet:
 
 Index-Position 0
 ```json
@@ -1208,9 +1208,9 @@ Token-URI 1
 
 Keine Logs oder Events bei diesem Testfall.
 
-### **Resulat**
+### **Resultat**
 
-Es war möglich nach den einzelnen Tokens des Patienten (0x4B2..) zu filtern und die entsprechenden Token-URIs abzurufen. In diesem Testing wurden die einzelnen Funktionen, welche dazu nötig sind, seperat durchgeführt und dokumentiert. Es wäre jedoch möglich die Abfrage der einzelnen Funktionen durch Code zu automatisieren (z.B. JavaScript). Das IPFS-Gateway ausserhalb der Blockchain gibt ebenfalls, gegeben der Token-URIs, die korrekten Metadaten-Files zurück.
+Es war möglich nach den einzelnen Tokens des Patienten (0x4B2..) zu filtern und die entsprechenden Token-URIs abzurufen. In diesem Testing wurden die einzelnen Funktionen, welche dazu nötig sind, separat durchgeführt und dokumentiert. Es wäre jedoch möglich die Abfrage der einzelnen Funktionen durch Code zu automatisieren (z.B. JavaScript). Das IPFS-Gateway ausserhalb der Blockchain gibt ebenfalls, gegeben der Token-URIs, die korrekten Metadaten-Files zurück.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -1245,13 +1245,13 @@ Der Patient kann seine eigenen registrierten Befunde (Tokens) vernichten.
 
 ### **Output-Daten**
 
-Der Versurch, den Token durch einen Arzt (0x787..) zu löschen:
+Der Versuch, den Token durch einen Arzt (0x787..) zu löschen:
 ```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "ERC721: caller is not token owner or approved"
 ```
 
-Der Versurch, den Token durch den Patient selbst (0x4B2..) zu löschen:
+Der Versuch, den Token durch den Patient selbst (0x4B2..) zu löschen:
 ```json
 {
 	"uint256 tokenId": "1"
@@ -1279,7 +1279,7 @@ Emittierter Event, dass der Token vernichtet wurde:
 ]
 ```
 
-### **Resulat**
+### **Resultat**
 
 Der Token konnte erfolgreich nur durch den Patienten selbst vernichtet werden. Der intelligente Vertrag emittiert ebenfalls einen Event, dass ein Token vernichtet wurde, dies wird daran erkannt, dass die Transfer-Adresse des Token 0x000 ist.
 
