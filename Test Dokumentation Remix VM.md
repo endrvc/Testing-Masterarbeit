@@ -20,9 +20,11 @@ In diesem Markdown-Dokument werden die Ergebnisse der Tests auf der lokalen Remi
 ## **Testfall ID 0 <a name="testfall0"></a>**
 
 ### **Testbeschreibung**
+
 Der Testfall 0 ist nicht im Anhang der Arbeit beschrieben und stellt auch keinen Funktionstest dar. Der intelligente Vertrag soll in diesem Schritt kompiliert und auf der lokalen Remix VM lauffähig sein.
 
 ### **Input-Daten**
+
 Alle intelligenten Verträge gemäss beschriebener technischer Implementierung in Kapitel 7.3:
 
 1.	ImageShare.sol -> (Hauptvertrag)
@@ -42,6 +44,7 @@ Ethereum-Konto mit welchem der Vertrag auf der lokalen Remix VM erstellt wird:	*
 Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf der lokalen Remix VM lauffähig. Ausserdem ist der Account, welcher den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem Aufsetzen des Vertrages auf der lokalen Blockchain die Rollen gemäss Lösungsdesign kreiert. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
 
 ### **Output-Daten**
+
 Rückgabe-Status nach kompilieren und erstellen des Hauptvertrags:
 ```
 Status:	true Transaction mined and execution succeed
@@ -190,7 +193,7 @@ The transaction has been reverted to the initial state.
 Reason provided by the contract: "AccessControl: account 0x4b20993bc481177ec7e8f571cecae8a9e22c02db is missing role 0x0000000000000000000000000000000000000000000000000000000000000000
 ```
 
-Output-Daten bei der Instanziierung mit dem Vertrags-Admin
+Output-Daten bei der Instanziierung mit dem Vertrags-Admin:
 ```json
 {
 	"0": "uint256: id 0",
