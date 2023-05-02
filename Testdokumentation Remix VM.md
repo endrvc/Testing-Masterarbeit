@@ -1,4 +1,4 @@
-# **Test Dokumentation Remix VM**
+# **Testdokumentation Remix VM**
 
 In diesem Markdown-Dokument werden die Ergebnisse der Tests auf der lokalen Remix VM dokumentiert. Der Test auf der lokalen VM ist gemäss dem beschriebenen Testvorgehen der erste Schritt bei der Validierung des entwickelten Artefakts. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 7.4 beschrieben.
 
@@ -41,7 +41,7 @@ Ethereum-Konto mit welchem der Vertrag auf der lokalen Remix VM erstellt wird:	*
 
 ### **Erwartetes Ergebnis**
 
-Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf der lokalen Remix VM lauffähig. Ausserdem ist das Konto, welches den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem Aufsetzen des Vertrages auf der lokalen Blockchain die Rollen gemäss Lösungsdesign kreiert. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
+Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf der lokalen Remix VM lauffähig. Ausserdem ist das Konto, welches den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem Aufsetzen des Vertrages auf dem Ethereum Testnetzwerk die Rollen gemäss Lösungsdesign kreiert. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
 
 ### **Output-Daten**
 
@@ -523,23 +523,23 @@ Patient:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
 
 Drittes Ethereum-Konto ohne Zulassung: *0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
 
-Folgende Metadaten des Patienten sollen angepasst werden.
+Folgende Metadaten des Patienten sollen angepasst werden:
 
-Hashwert des Identitätsdokumentes (CID):
+Hashwert des Identitätsdokumentes (CID)
 ``` json
 {
 	"previousCID": "eb6bf42250d4da07032090a0a8b8107679ab92a1c8631ec54d0ff1e59575a011",
 	"newCID": "62580fbe76142049a57602d3d4bbb9b2948f32a7ff48572ce1dc6c8b41100e3c"
 }
 ```
-Public Key:
+Public Key
 ``` json
 {
 	"previousPublic_key": "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAf0guvJXUv+Y55qQ2/nkQb1yiloGB0DV2 UdkHqNdsRhSDYL9vdx5NUE4/ffZV2+MEnsa2ZZ9LXDBiIycv7mkPaQIDAQAB",
 	"newPublic_key": "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIsiCaua6zIUQnK1KKdY6YFgVXOvXH+4baJ/M/ITmygbsFWfecoAoLFvO2V6jvi5wzE/FK4+zQ+I5md3uPKvn0CAwEAAQ=="
 }
 ```
-Aktivitätsstatus:
+Aktivitätsstatus
 ``` json
 {
 	"previousActiv": true,

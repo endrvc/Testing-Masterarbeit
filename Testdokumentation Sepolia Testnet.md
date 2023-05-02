@@ -1,6 +1,6 @@
-# **Test Dokumentation Sepolia Testnet**
+# **Testdokumentation Sepolia Testnet**
 
-In diesem Markdown-Dokument werden die Ergebnisse der Tests auf dem öffentlichten Sepolia Testnet dokumentiert. Der Test auf dem Ethereum Testnetzwerk ist gemäss dem beschriebenen Testvorgehen der zwei Schritt bei der Validierung des entwickelten Artefakts, nach den bereits durchgeführten Tests auf der lokalen Remix Blockchain. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 7.4 beschrieben.
+In diesem Markdown-Dokument werden die Ergebnisse der Tests auf dem öffentlichen Sepolia Testnet dokumentiert. Der Test auf dem Ethereum Testnetzwerk ist gemäss dem beschriebenen Testvorgehen der zweite Schritt bei der Validierung des entwickelten Artefakts, nach den bereits durchgeführten Tests auf der lokalen Remix Blockchain. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 7.4 beschrieben.
 
 Bei diesen Tests werden die entsprechenden Block- und Transaktionsreferenzen ebenfalls dokumentiert. Mithilfe des Blockchain-Explorer [Etherscan](https://sepolia.etherscan.io) ist es für jedermann möglich die Transaktionsdetails einzusehen, nachzuvollziehen und nachzuprüfen. 
 
@@ -566,23 +566,23 @@ Patient:	*0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665*
 
 Drittes Ethereum-Konto ohne Zulassung: *0x4C8b68b1F6C9031B3F3e4C6Cc5d207AB58AFe44B*
 
-Folgende Metadaten des Patienten sollen angepasst werden.
+Folgende Metadaten des Patienten sollen angepasst werden:
 
-Hashwert des Identitätsdokumentes (CID):
+Hashwert des Identitätsdokumentes (CID)
 ``` json
 {
 	"previousCID": "eb6bf42250d4da07032090a0a8b8107679ab92a1c8631ec54d0ff1e59575a011",
 	"newCID": "62580fbe76142049a57602d3d4bbb9b2948f32a7ff48572ce1dc6c8b41100e3c"
 }
 ```
-Public Key:
+Public Key
 ``` json
 {
 	"previousPublic_key": "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAf0guvJXUv+Y55qQ2/nkQb1yiloGB0DV2 UdkHqNdsRhSDYL9vdx5NUE4/ffZV2+MEnsa2ZZ9LXDBiIycv7mkPaQIDAQAB",
 	"newPublic_key": "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIsiCaua6zIUQnK1KKdY6YFgVXOvXH+4baJ/M/ITmygbsFWfecoAoLFvO2V6jvi5wzE/FK4+zQ+I5md3uPKvn0CAwEAAQ=="
 }
 ```
-Aktivitätsstatus:
+Aktivitätsstatus
 ``` json
 {
 	"previousActiv": true,
