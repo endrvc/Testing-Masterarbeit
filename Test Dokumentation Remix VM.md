@@ -41,7 +41,7 @@ Ethereum-Konto mit welchem der Vertrag auf der lokalen Remix VM erstellt wird:	*
 
 ### **Erwartetes Ergebnis**
 
-Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf der lokalen Remix VM lauffähig. Ausserdem ist der Account, welcher den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem Aufsetzen des Vertrages auf der lokalen Blockchain die Rollen gemäss Lösungsdesign kreiert. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
+Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf der lokalen Remix VM lauffähig. Ausserdem ist das Konto, welches den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem Aufsetzen des Vertrages auf der lokalen Blockchain die Rollen gemäss Lösungsdesign kreiert. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
 
 ### **Output-Daten**
 
@@ -86,6 +86,8 @@ Bytes32 der Rolle der Klinik:
 ```
 
 ### **Logs/Events**
+
+Emittierte Events für die Erstellung der neuen Rollen, sowie Zuweisung der Admin-Rolle an das Ethereum-Konto, welche den Vertrag initialisiert hat:
 
 ```json
 {
@@ -281,7 +283,7 @@ The transaction has been reverted to the initial state.
 Reason provided by the contract: "AccessControl: account 0x78731d3ca6b7e34ac0f824c42a7cc18a495cabab is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09".
 ```
 
-Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer
+Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer:
 ```json
 {
 	"0": "uint256: id 0",
@@ -464,7 +466,7 @@ The transaction has been reverted to the initial state.
 Reason provided by the contract: "AccessControl: account 0x17f6ad8ef982297579c203069c1dbffe4348c372 is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09"
 ```
 
-Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer
+Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer:
 ```json
 {
 	"0": "uint256: id 2",
@@ -616,7 +618,7 @@ Keine Logs & Events bei diesem Testfall.
 
 ### **Resultat**
 
-Der Patient (0x4B2..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestufe, den unabhängigen Prüfer (0xAb8..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrag aufgrund fehlender Autorisierung und Zulassung zurückgewiesen.
+Der Patient (0x4B2..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestufe, den unabhängigen Prüfer (0xAb8..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrag aufgrund fehlender Autorisierung und Zulassung auf der Blockchain zurückgewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
