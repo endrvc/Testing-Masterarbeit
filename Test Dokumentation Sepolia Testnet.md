@@ -2,7 +2,7 @@
 
 In diesem Markdown-Dokument werden die Ergebnisse der Tests auf dem öffentlichten Sepolia Testnet dokumentiert. Der Test auf dem Ethereum Testnetzwerk ist gemäss dem beschriebenen Testvorgehen der zwei Schritt bei der Validierung des entwickelten Artefakts, nach den bereits durchgeführten Tests auf der lokalen Remix Blockchain. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 7.4 beschrieben.
 
-Bei diesen Tests werden die entsprechenden Block und Transaktionsreferenzen ebenfalls dokumentiert. Mithilfe des Blockchain-Explorer [Etherscan](https://sepolia.etherscan.io) ist es für jedermann möglich die Transaktionsdetails einzusehen, nachzuvollziehen und nachzuprüfen. 
+Bei diesen Tests werden die entsprechenden Block- und Transaktionsreferenzen ebenfalls dokumentiert. Mithilfe des Blockchain-Explorer [Etherscan](https://sepolia.etherscan.io) ist es für jedermann möglich die Transaktionsdetails einzusehen, nachzuvollziehen und nachzuprüfen. 
 
 ### **Inhaltsverzeichnis zu den Testfällen**
 1. [Testfall ID 0](#testfall0)
@@ -39,11 +39,11 @@ Alle intelligenten Verträge gemäss beschriebener technischer Implementierung i
 
 Die intelligenten Verträge sind im [GitHub](https://github.com/endrvc/Masterarbeit_Prototype) Repository verfügbar.
 
-Ethereum-Konto mit welchem der Vertrag auf der lokalen Remix VM erstellt wird:	*0x05fAfBDe0CF789eD96188cAAF5A50088C380CbEb*
+Ethereum-Konto mit welchem der Vertrag auf dem Sepolia Testnet erstellt wird:	*0x05fAfBDe0CF789eD96188cAAF5A50088C380CbEb*
 
 ### **Erwartetes Ergebnis**
 
-Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf dem Sepolia Testnet lauffähig. Ausserdem ist der Account, welcher den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem Aufsetzen des Vertrages auf der lokalen Blockchain die Rollen gemäss Lösungsdesign kreiert. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
+Alle Verträge kompilieren erfolgreich und der Hauptvertrag ImageShare.sol ist auf dem Sepolia Testnet lauffähig. Ausserdem ist das Konto, welches den Vertrag aufsetzt, der Vertrags-Admin. Ausserdem werden mit dem Aufsetzen des Vertrages auf der lokalen Blockchain die Rollen gemäss Lösungsdesign kreiert. Dabei ist der Vertrags-Admin der Rollen-Admin für die unabhängigen Prüfer. Diese sind wiederum der Rollen-Admin für Patienten, Ärzte sowie Kliniken.
 
 ### **Output-Daten**
 
@@ -97,7 +97,7 @@ Die Transaktionskosten gemäss Logs:
 transaction cost: 3222876
 ```
 
-Emittierte Events für die Erstellung der neuen Rollen, sowie Zuweisung der Admin-Rolle and das Ethereum-Konto, welche den Vertrag initialisiert hat:
+Emittierte Events für die Erstellung der neuen Rollen, sowie Zuweisung der Admin-Rolle an das Ethereum-Konto, welche den Vertrag initialisiert hat:
 
 ```json
 [
@@ -257,14 +257,13 @@ Das dritte Ethereum-Konto (0x4C8..) war nicht in der Lage, den unabhängigen Pr�
 
 Der intelligente Vertrag muss der Rolle «unabhängiger Prüfer» die Möglichkeit geben, Patienten auf der Blockchain zuzulassen, sowie deren digitale Identität abzubilden. Dabei dürfen nur unsensible Metadaten auf der Blockchain gespeichert werden. Die Zulassung ist dabei nur durch den unabhängigen Prüfer möglich.
 
-
 ### **Input-Daten**
 
-Unabhängiger Prüfer:	*0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2*
+Unabhängiger Prüfer:	*0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688*
 
-Ethereum-Konto des neuen Patienten:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
+Ethereum-Konto des neuen Patienten:	*0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665*
 
-Drittes Ethereum-Konto, welches kein unabhängiger Prüfer ist:	*0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB*
+Drittes Ethereum-Konto, welches kein unabhängiger Prüfer ist:	*0x4C8b68b1F6C9031B3F3e4C6Cc5d207AB58AFe44B*
 
 Die Metadaten des Patienten, welche auf der Blockchain verankert werden sollen bei der Zulassung:
 ``` json
@@ -272,7 +271,7 @@ Die Metadaten des Patienten, welche auf der Blockchain verankert werden sollen b
 	"bool _activ": true,
 	"string _CID": "eb6bf42250d4da07032090a0a8b8107679ab92a1c8631ec54d0ff1e59575a011",
 	"string _public_key": "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAf0guvJXUv+Y55qQ2/nkQb1yiloGB0DV2UdkHqNdsRhSDYL9vdx5NUE4/ffZV2+MEnsa2ZZ9LXDBiIycv7mkPaQIDAQAB",
-	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"address _identity_address": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 	"bytes32 _role": "0x72606200fac42b7dc86b75901d61ecfab2a4a1a6eded478b97a428094891abed"
 }
 ```
@@ -296,49 +295,57 @@ Der Versuch einer anderen Ethereum-Adresse als jener mit der Rolle des unabhäng
 
 Output-Daten bei der Instanziierung mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "AccessControl: account 0x78731d3ca6b7e34ac0f824c42a7cc18a495cabab is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09".
+Transaction hash: 0x86e5d91e5aed6560d855842bf386d4cb11259ea67b05bbd0e2c639c6713d18f5
+```
+```
+execution reverted: AccessControl: account 0x4c8b68b1f6c9031b3f3e4c6cc5d207ab58afe44b is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09
 ```
 
-Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer
+Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer:
+```
+Transaction hash: 0x58f5b7debb756bad20fcb2c0878330dab95771b54e0d8329771e0558e8a39016
+```
 ```json
 {
 	"0": "uint256: id 0",
 	"1": "uint256: verified_by 0",
 	"2": "bool: activ true",
 	"3": "string: CID eb6bf42250d4da07032090a0a8b8107679ab92a1c8631ec54d0ff1e59575a011",
-	"4": "string: public_key MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAf0guvJXUv+Y55qQ2/nkQb1yiloGB0DV2 UdkHqNdsRhSDYL9vdx5NUE4/ffZV2+MEnsa2ZZ9LXDBiIycv7mkPaQIDAQAB",
-	"5": "address: identity_address 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"4": "string: public_key MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAf0guvJXUv+Y55qQ2/nkQb1yiloGB0DV2UdkHqNdsRhSDYL9vdx5NUE4/ffZV2+MEnsa2ZZ9LXDBiIycv7mkPaQIDAQAB",
+	"5": "address: identity_address 0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 	"6": "bytes32: role 0x72606200fac42b7dc86b75901d61ecfab2a4a1a6eded478b97a428094891abed"
 }
 ```
 
 ### **Logs/Events**
 
+Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
+```
+transaction cost: 330363
+```
+
 Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle des Patienten gewährt wurde:
 ```json
-{
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d",
 		"event": "RoleGranted",
 		"args": {
 			"0": "0x72606200fac42b7dc86b75901d61ecfab2a4a1a6eded478b97a428094891abed",
-			"1": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"2": "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
+			"1": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"2": "0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688",
 			"role": "0x72606200fac42b7dc86b75901d61ecfab2a4a1a6eded478b97a428094891abed",
-			"account": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"sender": "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2"
+			"account": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"sender": "0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688"
 		}
 	}
 ]
-}
 ```
 
 ### **Resultat**
 
-Das dritte Ethereum-Konto (0x787..) war nicht in der Lage, den Patienten auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte den Patienten (0x4B2..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse des Patienten erfolgreich die neue Rolle zugewiesen.
+Das dritte Ethereum-Konto (0x4C8..) war nicht in der Lage, den Patienten auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0x1FC..) konnte den Patienten (0x3D1..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse des Patienten erfolgreich die neue Rolle zugewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -351,14 +358,13 @@ Das dritte Ethereum-Konto (0x787..) war nicht in der Lage, den Patienten auf der
 
 Der intelligente Vertrag muss der Rolle «unabhängiger Prüfer» die Möglichkeit geben, Ärzte auf der Blockchain zuzulassen, sowie deren digitale Identität abzubilden. Dabei dürfen nur unsensible Metadaten auf der Blockchain gespeichert werden. Die Zulassung ist dabei nur durch den unabhängigen Prüfer möglich.
 
-
 ### **Input-Daten**
 
-Unabhängiger Prüfer:	*0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2*
+Unabhängiger Prüfer:	*0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688*
 
-Ethereum-Konto des neuen Arztes:	*0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB*
+Ethereum-Konto des neuen Arztes:	*0xa439530c1880e4abb63e5F142F138EC1c1836b8e*
 
-Drittes Ethereum-Konto, dass kein unabhängiger Prüfer ist:	*0x617F2E2fD72FD9D5503197092aC168c91465E7f2*
+Drittes Ethereum-Konto, dass kein unabhängiger Prüfer ist:	*0x4C8b68b1F6C9031B3F3e4C6Cc5d207AB58AFe44B*
 
 Die Metadaten des Arztes, welche auf der Blockchain verankert werden sollen bei der Zulassung:
 ``` json
@@ -366,7 +372,7 @@ Die Metadaten des Arztes, welche auf der Blockchain verankert werden sollen bei 
 	"bool _activ": true,
 	"string _CID": "8c82bc3f393015ff2b030aaa65f647b5a5fdeef67710b7c33ca4d2b0b9dce771",
 	"string _public_key": "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAbpQuBhjeIiBaV3GfM3rS5ymrnXxFuYFdcjVyvXhWe29ArMDKSo8WVAPI7kC95jEJh/laj27+jhow0uNuSmCcJQIDAQAB",
-	"address _identity_address": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
+	"address _identity_address": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e",
 	"bytes32 _role": "0xdc79ce1dcb26124af199f3da60ab26f473af9721c4a30e7db085946f824c3a3a"
 }
 ```
@@ -389,11 +395,16 @@ Der Versuch einer anderen Ethereum-Adresse als jener mit der Rolle des unabhäng
 
 Output-Daten bei der Instanziierung mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "AccessControl: account 0x617f2e2fd72fd9d5503197092ac168c91465e7f2 is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea0"
+Transaction hash: 0x7a2f1638c82f609b3c88ee24f27325fab5c75d6a734ee90225b5afd7025fb60a
+```
+```
+execution reverted: AccessControl: account 0x4c8b68b1f6c9031b3f3e4c6cc5d207ab58afe44b is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09"
 ```
 
 Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer:
+```
+Transaction hash: 0xaec6219c99f6741fb45d907e2f84b9f5c9c1aa3e7ddb0acbe2237939b04533ed
+```
 ```json
 {
 	"0": "uint256: id 1",
@@ -401,27 +412,32 @@ Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer:
 	"2": "bool: activ true",
 	"3": "string: CID 8c82bc3f393015ff2b030aaa65f647b5a5fdeef67710b7c33ca4d2b0b9dce771",
 	"4": "string: public_key MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAbpQuBhjeIiBaV3GfM3rS5ymrnXxFuYFdcjVyvXhWe29ArMDKSo8WVAPI7kC95jEJh/laj27+jhow0uNuSmCcJQIDAQAB",
-	"5": "address: identity_address 0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
+	"5": "address: identity_address 0xa439530c1880e4abb63e5F142F138EC1c1836b8e",
 	"6": "bytes32: role 0xdc79ce1dcb26124af199f3da60ab26f473af9721c4a30e7db085946f824c3a3a"
 }
 ```
 
 ### **Logs/Events**
 
+Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
+```
+transaction cost: 333175
+```
+
 Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle des Arztes gewährt wurde:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d",
 		"event": "RoleGranted",
 		"args": {
 			"0": "0xdc79ce1dcb26124af199f3da60ab26f473af9721c4a30e7db085946f824c3a3a",
-			"1": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
-			"2": "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
+			"1": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e",
+			"2": "0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688",
 			"role": "0xdc79ce1dcb26124af199f3da60ab26f473af9721c4a30e7db085946f824c3a3a",
-			"account": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
-			"sender": "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2"
+			"account": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e",
+			"sender": "0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688"
 		}
 	}
 ]
@@ -429,7 +445,7 @@ Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen P
 
 ### **Resultat**
 
-Das dritte Ethereum-Konto (0x617..) war nicht in der Lage, den Arzt auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte den Arzt (0x787..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse des Arztes erfolgreich die neue Rolle zugewiesen.
+Das dritte Ethereum-Konto (0x4C8..) war nicht in der Lage, den Arzt auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0x1FC..) konnte den Arzt (0xa43..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse des Arztes erfolgreich die neue Rolle zugewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -444,11 +460,11 @@ Der intelligente Vertrag muss der Rolle «unabhängiger Prüfer» die Möglichke
 
 ### **Input-Daten**
 
-Unabhängiger Prüfer:	*0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2*
+Unabhängiger Prüfer:	*0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688*
 
-Ethereum-Konto der neuen Klinik:	*0x617F2E2fD72FD9D5503197092aC168c91465E7f2*
+Ethereum-Konto der neuen Klinik:	*0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac*
 
-Drittes Ethereum-Konto, dass kein unabhängiger Prüfer ist:	*0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
+Drittes Ethereum-Konto, dass kein unabhängiger Prüfer ist:	*0x4C8b68b1F6C9031B3F3e4C6Cc5d207AB58AFe44B*
 
 Die Metadaten der Klinik, welche auf der Blockchain verankert werden sollen bei der Zulassung:
 ``` json
@@ -456,7 +472,7 @@ Die Metadaten der Klinik, welche auf der Blockchain verankert werden sollen bei 
 	"bool _activ": true,
 	"string _CID": "9e49fb2e0235162ee39d1ca9ad02c9dd9a6f3fca07d2fc1a1f7f196d6efdb518",
 	"string _public_key": "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKyJxi8QE8ZYnYxVVYhUtqNdhqmtPzXuUJmVNa4rh/I3fx30ldyS4zc74dg5rH8q6kOLMsQP5Y8xEepQh2hq36sCAwEAAQ==",
-	"address _identity_address": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
+	"address _identity_address": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac",
 	"bytes32 _role": "0xc8f5b4140cca307cd927e59cbeea8291bffeee228fc677f0fa059aef7b4dd8d5"
 }
 ```
@@ -479,11 +495,16 @@ Der Versuch einer anderen Ethereum-Adresse als der mit der Rolle des unabhängig
 
 Output-Daten bei der Instanziierung mit einem dritten Ethereum-Konto (kein unabhängiger Prüfer):
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "AccessControl: account 0x17f6ad8ef982297579c203069c1dbffe4348c372 is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09"
+Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+```
+```
+execution reverted: AccessControl: account 0x4c8b68b1f6c9031b3f3e4c6cc5d207ab58afe44b is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09
 ```
 
-Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer
+Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer:
+```
+Transaction hash: 0xedcd4c6f6b2e54885bd0e80b920219b14ff88ed8b55c4525cc7976a82e71f686
+```
 ```json
 {
 	"0": "uint256: id 2",
@@ -491,27 +512,32 @@ Output-Daten bei der Instanziierung mit dem unabhängigen Prüfer
 	"2": "bool: activ true",
 	"3": "string: CID 9e49fb2e0235162ee39d1ca9ad02c9dd9a6f3fca07d2fc1a1f7f196d6efdb518",
 	"4": "string: public_key MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKyJxi8QE8ZYnYxVVYhUtqNdhqmtPzXuUJmVNa4rh/I3fx30ldyS4zc74dg5rH8q6kOLMsQP5Y8xEepQh2hq36sCAwEAAQ==",
-	"5": "address: identity_address 0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
+	"5": "address: identity_address 0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac",
 	"6": "bytes32: role 0xc8f5b4140cca307cd927e59cbeea8291bffeee228fc677f0fa059aef7b4dd8d5"
 }
 ```
 
 ### **Logs/Events**
 
+Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
+```
+transaction cost: 333260
+```
+
 Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle der Klinik gewährt wurde:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d",
 		"event": "RoleGranted",
 		"args": {
 			"0": "0xc8f5b4140cca307cd927e59cbeea8291bffeee228fc677f0fa059aef7b4dd8d5",
-			"1": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
-			"2": "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
+			"1": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac",
+			"2": "0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688",
 			"role": "0xc8f5b4140cca307cd927e59cbeea8291bffeee228fc677f0fa059aef7b4dd8d5",
-			"account": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
-			"sender": "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2"
+			"account": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac",
+			"sender": "0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688"
 		}
 	}
 ]
@@ -519,7 +545,7 @@ Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen P
 
 ### **Resultat**
 
-Das dritte Ethereum-Konto (0x17F..) war nicht in der Lage, die Klinik auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0xAb8..) konnte die Klinik (0x617..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse der Klinik erfolgreich die neue Rolle zugewiesen.
+Das dritte Ethereum-Konto (0x4C8..) war nicht in der Lage, die Klinik auf der Blockchain zuzulassen und wurde aufgrund der fehlenden Rolle des unabhängigen Prüfers zurückgewiesen. Der unabhängige Prüfer (0x1FC..) konnte die Klinik (0x8d8..) erfolgreich instanziieren und alle relevanten Metadaten sind auf der Blockchain verankert, inklusive der automatischen Verweisung des korrekten unabhängigen Prüfers, welcher die Validierung durchgeführt hat. Ausserdem wurde der Ethereum-Adresse der Klinik erfolgreich die neue Rolle zugewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -534,11 +560,11 @@ Der intelligente Vertrag muss Anpassung an den Metadaten der digitalen Identitä
 
 ### **Input-Daten**
 
-Unabhängiger Prüfer:	*0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2*
+Unabhängiger Prüfer:	*0x1FCa0bC77aaA5526516E658D8277Ec3ff464a688*
 
-Patient:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
+Patient:	*0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665*
 
-Drittes Ethereum-Konto ohne Zulassung: *0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
+Drittes Ethereum-Konto ohne Zulassung: *0x4C8b68b1F6C9031B3F3e4C6Cc5d207AB58AFe44B*
 
 Folgende Metadaten des Patienten sollen angepasst werden.
 
@@ -574,14 +600,19 @@ Die einzelnen Identitäten können ihre **eigenen** Metadaten anpassen und keine
 
 Anpassungsversuch durch den Patient selbst:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "AccessControl: account 0x4b20993bc481177ec7e8f571cecae8a9e22c02db is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1e
+Transaction hash: 0xff8630d5517a307813262629ebca4f7ed53415879c7799d0a17b0cc8224566db
+```
+```
+execution reverted: AccessControl: account 0x3d1df3dcaab8a521c4141b0a77bc399811ea0665 is missing role 0x0ce23c3e399818cfee81a7ab0880f714e53d7672b08df0fa62f2843416e1ea09
 ```
 
 Anpassungsversuch durch den unabhängigen Prüfer:
+```
+Transaction hash: 0xff8630d5517a307813262629ebca4f7ed53415879c7799d0a17b0cc8224566db
+```
 ```json
 {
-	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"address _identity_address": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 	"string _new_CID": "62580fbe76142049a57602d3d4bbb9b2948f32a7ff48572ce1dc6c8b41100e3c"
 }
 ```
@@ -590,13 +621,19 @@ Anpassungsversuch durch den unabhängigen Prüfer:
 
 Anpassungsversuch durch drittes Ethereum-Konto:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Unauthorized access".
+Transaction hash: 0x76870375fd7a66bf38cf8806e52a16036787ed65a96b5120927c5526f28ee5fd
 ```
+```
+execution reverted: Unauthorized access
+```
+
 Anpassungsversuch durch den Patienten selbst:
+```
+Transaction hash: 0x857d22f53411e0083768ee94712aead08841e152e10aa3e3fa3b8a014048be80
+```
 ```json
 {
-	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"address _identity_address": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 	"string _new_public_key": "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIsiCaua6zIUQnK1KKdY6YFgVXOvXH+4baJ/M/ITmygbsFWfecoAoLFvO2V6jvi5wzE/FK4+zQ+I5md3uPKvn0CAwEAAQ=="
 }
 ```
@@ -605,13 +642,19 @@ Anpassungsversuch durch den Patienten selbst:
 
 Anpassungsversuch durch drittes Ethereum-Konto:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Unauthorized access".
+Transaction hash: 0x8d7994ad574761178a96ebb0a23e9d89aa49b2d6623ffbbc8f0a58d622c9af07
 ```
+```
+execution reverted: Unauthorized access
+```
+
 Anpassungsversuch durch den Patienten selbst:
+```
+Transaction hash: 0x6d906504b16d7635355fc7f12415c23bae5c6a79a8c862d23d7ae79736cab901
+```
 ```json
 {
-	"address _identity_address": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"address _identity_address": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 	"bool _new_activ": false
 }
 ```
@@ -624,18 +667,37 @@ Anpassungsversuch durch den Patienten selbst:
 	"2": "bool: activ false",
 	"3": "string: CID 62580fbe76142049a57602d3d4bbb9b2948f32a7ff48572ce1dc6c8b41100e3c",
 	"4": "string: public_key MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIsiCaua6zIUQnK1KKdY6YFgVXOvXH+4baJ/M/ITmygbsFWfecoAoLFvO2V6jvi5wzE/FK4+zQ+I5md3uPKvn0CAwEAAQ==",
-	"5": "address: identity_address 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"5": "address: identity_address 0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 	"6": "bytes32: role 0x72606200fac42b7dc86b75901d61ecfab2a4a1a6eded478b97a428094891abed"
 }
 ```
 
 ### **Logs/Events**
 
-Keine Logs & Events bei diesem Testfall.
+**Anpassung des CID**
+
+Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
+```
+transaction cost: 43574
+```
+
+**Anpassung des Public Key**
+
+Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
+```
+transaction cost: 52362
+```
+
+**Anpassung des Aktivitätsstatus**
+
+Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
+```
+transaction cost: 24057
+```
 
 ### **Resultat**
 
-Der Patient (0x4B2..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestufe, den unabhängigen Prüfer (0xAb8..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrag aufgrund fehlender Autorisierung und Zulassung zurückgewiesen.
+Der Patient (0x3D1..) selbst konnte seinen Public Key sowie seinen Aktivitätsstatus selbst ändern. Die Änderung des Hashwerts des Identitätsdokuments war dabei nur durch die nächst höhere Hierarchiestufe, den unabhängigen Prüfer (0x1FC..), möglich, nicht durch den Patienten selbst. Dritte Ethereum-Konten, konnten keine Änderungen an den Metadaten vornehmen und wurden vom intelligenten Vertrag aufgrund fehlender Autorisierung und Zulassung auf der Blockchain zurückgewiesen.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -682,11 +744,11 @@ QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag
 
 **Ethereum-Konten**
 
-Klinik:		*0x617F2E2fD72FD9D5503197092aC168c91465E7f2*
+Klinik:		*0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac*
 
-Patient:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
+Patient:	*0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665*
 
-Drittes Ethereum-Konto:		*0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
+Drittes Ethereum-Konto:		*0x4C8b68b1F6C9031B3F3e4C6Cc5d207AB58AFe44B*
 
 ### **Erwartetes Ergebnis**
 
@@ -696,56 +758,71 @@ Drittes Ethereum-Konto:		*0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
 
 Versuch der Registrierung eines Tokens durch einen Dritten für einen Patienten:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only Physician and Hospitals can mint new Token"
+Transaction hash: 0xd56067529b1d1fba3ac5a8ba76e867bfbca1a3d2d01feb74900fb1b24822e87d
+```
+```
+execution reverted: Only Physician and Hospitals can mint new Token
 ```
 
 Versuch der Registrierung eines Tokens des Patienten für sich selbst:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only Physician and Hospitals can mint new Token"
+Transaction hash: 0xdeacb1fb498a52f8345e3aa78ec1757db66c834448097096a149452232c66de0
+```
+```
+execution reverted: Only Physician and Hospitals can mint new Token
 ```
 
 Versuch der Registrierung eines Tokens durch die Klinik für einen Dritten ohne die Rolle "Patient":
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Mint only possible for patients"
+Transaction hash: 0xfda50e142510121d19e87cf180c267574ba32be1768035b002be4d64cdf740fe
+```
+```
+execution reverted: Mint only possible for patients
 ```
 
 Versuch der Registrierung eines Tokens durch die Klinik für sich selbst:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Mint only possible for patients"
+Transaction hash: 0x339bc9e74aa85d8d5cdb886d6d6d2c86aa84d72ad31dd63caf84756ea4de7253
+```
+```
+execution reverted: Mint only possible for patients
 ```
 
 Versuch der Registrierung eines Tokens durch die Klinik für einen Patienten:
+```
+Transaction hash: 0x3147ed1dbd322953ecd92ef992d70617ce4e546a2f3c8e45bff652112fb94755
+```
 ```json
 {
-	"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+	"address to": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 	"string uri": "QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag"
 }
 ```
 
 ### **Logs/Events**
 
+Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
+```
+transaction cost: 198657
+```
+
 Emittierter Event, dass ein neuer Token ausgegeben wurde:
 ```json
 [
 	{
-		"from": "0xD7ACd2a9FD159E69Bb102A1ca21C9a3e3A5F771B",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
 		"event": "Transfer",
 		"args": {
 			"0": "0x0000000000000000000000000000000000000000",
-			"1": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"1": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 			"2": "0",
 			"from": "0x0000000000000000000000000000000000000000",
-			"to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"to": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 			"tokenId": "0"
 		}
 	}
 ]
-
 ```
 
 ### **Resultat**
@@ -769,13 +846,13 @@ Der intelligente Vertrag soll den Genehmigungsprozess abbilden können, welchen 
 
 Konten welchen genutzt werden, um die verschiedenen Genehmigungen anzufragen:
 
-Klinik:		*0x617F2E2fD72FD9D5503197092aC168c91465E7f2*
+Klinik:		*0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac*
 
-Arzt:		*0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB*
+Arzt:		*0xa439530c1880e4abb63e5F142F138EC1c1836b8e*
 
-Patient:	*0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db*
+Patient:	*0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665*
 
-Drittes Ethereum-Konto:		*0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
+Drittes Ethereum-Konto:		*0x4C8b68b1F6C9031B3F3e4C6Cc5d207AB58AFe44B*
 
 
 ### **Erwartetes Ergebnis**
@@ -788,39 +865,53 @@ Drittes Ethereum-Konto:		*0x17F6AD8Ef982297579C203069C1DbfFE4348c372*
 
 Versuch der Anfrage einer Genehmigung eines Dritten an einen Patienten:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital can request approval."
+Transaction hash: 0xaa1e5ebce159cdeedb1b41e4fe8707f84b429e5631784e04e3cabdce13ea5f19
+```
+```
+execution reverted: Only identities with role Physician or Hospital can request approval.
 ```
 
 Versuch der Anfrage einer Genehmigung eines Dritten an einen Arzt:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital can request approval."
+Transaction hash: 0x3d7cfbc5c891ed53df013c282658c1cfd1bfc153b4fdbe464c929193ed13928c
+```
+```
+execution reverted: Only identities with role Physician or Hospital can request approval.
 ```
 
 Versuch der Anfrage einer Genehmigung eines Arztes an einen Dritten:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Patient can be requested for approvals."
+Transaction hash: 0x1e4abceb65a8f71213285e6092cc3f6677a07c393524e08c9fb5cccdbb072716
+```
+```
+execution reverted: Only identities with role Patient can be requested for approvals.
 ```
 
 Versuch der Anfrage einer Genehmigung eines Arztes an einen Patienten:
+```
+Transaction hash: 0x510e668f6606b1c3d54b645e14660ff26afe6b35546baf25fe9be296efaa4092
+```
 ```json
 {
-	"address _patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db"
+	"address _patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665"
 }
 ```
 
 Versuch der Anfrage einer Genehmigung einer Klinik an einen Dritten:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Patient can be requested for approvals."
+Transaction hash: 0x0aab62b042904eaffa85e61bb1a4ac4f68f8a9fecd40080cefeb5a17b51c3da8
+```
+```
+execution reverted: Only identities with role Patient can be requested for approvals.
 ```
 
 Versuch der Anfrage einer Genehmigung einer Klinik an einen Patienten:
+```
+Transaction hash: 0x2b715df9e67ff50c9366e71f501dd566cacc30f6a62c02987d333581ffa3a968
+```
 ```json
 {
-	"address _patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db"
+	"address _patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665"
 }
 ```
 
@@ -828,45 +919,61 @@ Versuch der Anfrage einer Genehmigung einer Klinik an einen Patienten:
 
 Versuch der Erteilung der Genehmigung durch einen Dritten an einen Patienten:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital can be subject to approval."
+Transaction hash: 0x827f82a9460f7515ac7a72bb676cbac39a6c8a31aa7e92415f061cefd2d95fa0
+```
+```
+execution reverted: Only identities with role Physician or Hospital can be subject to approval.
 ```
 
 Versuch der Erteilung der Genehmigung durch einen Dritten an einen Arzt:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Patient can grant approvals."
+Transaction hash: 0x28c3425eb954f3017c44843aa55a7c5160715d2dc420b7b463b6b2bc5a1e0cd5
+```
+```
+execution reverted: Only identities with role Patient can grant approvals.
 ```
 
 Versuch der Erteilung der Genehmigung durch einen Arzt an einen Dritten:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital can be subject to approval."
+Transaction hash: 0x1be107b3113603cb9749170f905207c27af7ce3418779ee311cb2ad748159221
+```
+```
+execution reverted: Only identities with role Physician or Hospital can be subject to approval.
 ```
 
 Versuch der Erteilung der Genehmigung durch einen Arzt an einen Patienten:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital can be subject to approval."
+Transaction hash: 0xe8214e4b588b310a183a90f61bc9e864c28bf47c08908705d4feff9629642480
+```
+```
+execution reverted: Only identities with role Physician or Hospital can be subject to approval.
 ```
 
 Versuch der Erteilung der Genehmigung durch einen Patienten an einen Dritten:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital can be subject to approval."
+Transaction hash: 0x71e277f8819e09fbaec57d3ee944ae2ff30ac43b3443d11f963b778350e6f06d
+```
+```
+execution reverted: Only identities with role Physician or Hospital can be subject to approval.
 ```
 
 Versuch der Erteilung der Genehmigung durch einen Patienten an einen Arzt:
+```
+Transaction hash: 0x2b3a53ee85c349538187f311b2f3f35dde793436a970dda7fa954562ae8675b2
+```
 ```json
 {
-	"address _identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+	"address _identityAddress": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e"
 }
 ```
 
 Versuch der Erteilung der Genehmigung durch einen Patienten an eine Klinik:
+```
+Transaction hash: 0xbd364bed2c7563394120beccf14734ed01c1e6e9b80ec151040d74126533d2b8
+```
 ```json
 {
-	"address _identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+	"address _identityAddress": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac"
 }
 ```
 
@@ -874,11 +981,17 @@ Versuch der Erteilung der Genehmigung durch einen Patienten an eine Klinik:
 
 Versuch der Widerrufung der Genehmigung durch einen Dritten für einen Patienten:
 ```
+Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+```
+```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Dritten für einen Arzt:
+```
+Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+```
 ```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "Only identities with role Patient revoke approvals."
@@ -886,11 +999,17 @@ Reason provided by the contract: "Only identities with role Patient revoke appro
 
 Versuch der Widerrufung der Genehmigung durch einen Arzt für einen Dritten:
 ```
+Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+```
+```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Arzt für einen Patienten:
+```
+Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+```
 ```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
@@ -898,11 +1017,17 @@ Reason provided by the contract: "Only identities with role Physician or Hospita
 
 Versuch der Widerrufung der Genehmigung durch einen Patienten für einen Dritten:
 ```
+Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+```
+```
 The transaction has been reverted to the initial state.
 Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Patienten für einen Arzt:
+```
+Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+```
 ```json
 {
 	"address _identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
@@ -910,6 +1035,9 @@ Versuch der Widerrufung der Genehmigung durch einen Patienten für einen Arzt:
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Patienten für eine Klinik:
+```
+Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+```
 ```json
 {
 	"address _identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
@@ -920,35 +1048,45 @@ Versuch der Widerrufung der Genehmigung durch einen Patienten für eine Klinik:
 
 **Anfrage der Genehmigung**
 
+Die Transaktionskosten für die erfolgreiche Transaktion, der Anfrage einer Genehmigung durch einen Arzt an einen Patienten, gemäss Logs:
+```
+transaction cost: 30052
+```
+
 Emittierter Event, bei der Anfrage einer Genehmigung durch einen Arzt an einen Patienten:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x8f491ef69bf5d5051c16fff776856d82887c8230d1125ef92ce9f2aaf05ed4e5",
 		"event": "ApprovalRequested",
 		"args": {
-			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"1": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
-			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"_identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+			"0": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"1": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e",
+			"_patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"_identityAddress": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e"
 		}
 	}
 ]
+```
+
+Die Transaktionskosten für die erfolgreiche Transaktion, der Anfrage einer Genehmigung durch eine Klinik an einen Patienten, gemäss Logs:
+```
+transaction cost: 30270
 ```
 
 Emittierter Event, bei der Anfrage einer Genehmigung durch eine Klinik an einen Patienten:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x8f491ef69bf5d5051c16fff776856d82887c8230d1125ef92ce9f2aaf05ed4e5",
 		"event": "ApprovalRequested",
 		"args": {
-			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"1": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
-			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"_identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+			"0": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"1": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac",
+			"_patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"_identityAddress": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac"
 		}
 	}
 ]
@@ -956,41 +1094,56 @@ Emittierter Event, bei der Anfrage einer Genehmigung durch eine Klinik an einen 
 
 **Erteilung der Genehmigung**
 
+Die Transaktionskosten für die erfolgreiche Transaktion, der Erteilung einer Genehmigung durch einen Patienten an einen Arzt, gemäss Logs:
+```
+transaction cost: 50024
+```
+
 Emittierter Event, bei der Erteilung einer Genehmigung durch einen Patienten an einen Arzt:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x744a29cbc651d1297d6bffa0d1e6b58a94c6f9665708be83fa0c115d805af53a",
 		"event": "ApprovalGranted",
 		"args": {
-			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"1": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
-			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"_identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+			"0": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"1": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e",
+			"_patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"_identityAddress": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e"
 		}
 	}
 ]
+```
+
+Die Transaktionskosten für die erfolgreiche Transaktion, der Erteilung einer Genehmigung durch einen Patienten an eine Klinik, gemäss Logs:
+```
+transaction cost: 50261
 ```
 
 Emittierter Event, bei der Erteilung einer Genehmigung durch einen Patienten an eine Klinik:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x744a29cbc651d1297d6bffa0d1e6b58a94c6f9665708be83fa0c115d805af53a",
 		"event": "ApprovalGranted",
 		"args": {
-			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"1": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
-			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"_identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+			"0": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"1": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac",
+			"_patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"_identityAddress": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac"
 		}
 	}
 ]
 ```
 
 **Widerrufung der Genehmigung**
+
+Die Transaktionskosten für die erfolgreiche Transaktion, der Widerrufung einer Genehmigung durch einen Patienten an einen Arzt, gemäss Logs:
+```
+transaction cost: 333260
+```
 
 Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten an einen Arzt:
 ```json
@@ -1007,6 +1160,11 @@ Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten a
 		}
 	}
 ]
+```
+
+Die Transaktionskosten für die erfolgreiche Transaktion, der Widerrufung einer Genehmigung durch einen Patienten an eine Klinik, gemäss Logs:
+```
+transaction cost: 333260
 ```
 
 Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten an eine Klinik:
