@@ -94,7 +94,7 @@ Bytes32 der Rolle der Klinik:
 
 Die Transaktionskosten gemäss Logs:
 ```
-transaction cost: 3222876
+transaction cost: 3222876 gas
 ```
 
 Emittierte Events für die Erstellung der neuen Rollen, sowie Zuweisung der Admin-Rolle an das Ethereum-Konto, welche den Vertrag initialisiert hat:
@@ -222,7 +222,7 @@ Transaction hash: 0x9d8d7f086e1ce687033835a3e7f9c5cdbf7ebe5d493f50a2a02109937a56
 
 Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
 ```
-transaction cost: 58464
+transaction cost: 58464 gas
 ```
 
 Emittierter Event nach dem erfolgreichen Instanziieren durch den Vertrags-Admin, dass die Rolle des unabhängigen Prüfers gewährt wurde:
@@ -321,7 +321,7 @@ Transaction hash: 0x58f5b7debb756bad20fcb2c0878330dab95771b54e0d8329771e0558e8a3
 
 Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
 ```
-transaction cost: 330363
+transaction cost: 330363 gas
 ```
 
 Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle des Patienten gewährt wurde:
@@ -421,7 +421,7 @@ Transaction hash: 0xaec6219c99f6741fb45d907e2f84b9f5c9c1aa3e7ddb0acbe2237939b045
 
 Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
 ```
-transaction cost: 333175
+transaction cost: 333175 gas
 ```
 
 Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle des Arztes gewährt wurde:
@@ -521,7 +521,7 @@ Transaction hash: 0xedcd4c6f6b2e54885bd0e80b920219b14ff88ed8b55c4525cc7976a82e71
 
 Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
 ```
-transaction cost: 333260
+transaction cost: 333260 gas
 ```
 
 Emittierter Event nach dem erfolgreichen Instanziieren durch den unabhängigen Prüfer, dass die Rolle der Klinik gewährt wurde:
@@ -678,21 +678,21 @@ Transaction hash: 0x6d906504b16d7635355fc7f12415c23bae5c6a79a8c862d23d7ae79736ca
 
 Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
 ```
-transaction cost: 43574
+transaction cost: 43574 gas
 ```
 
 **Anpassung des Public Key**
 
 Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
 ```
-transaction cost: 52362
+transaction cost: 52362 gas
 ```
 
 **Anpassung des Aktivitätsstatus**
 
 Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
 ```
-transaction cost: 24057
+transaction cost: 24057 gas
 ```
 
 ### **Resultat**
@@ -803,7 +803,7 @@ Transaction hash: 0x3147ed1dbd322953ecd92ef992d70617ce4e546a2f3c8e45bff652112fb9
 
 Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
 ```
-transaction cost: 198657
+transaction cost: 198657 gas
 ```
 
 Emittierter Event, dass ein neuer Token ausgegeben wurde:
@@ -981,66 +981,61 @@ Transaction hash: 0xbd364bed2c7563394120beccf14734ed01c1e6e9b80ec151040d74126533
 
 Versuch der Widerrufung der Genehmigung durch einen Dritten für einen Patienten:
 ```
-Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+Transaction hash: 0x9d23091e6cf431598fe5f5e3b410086c244ca47d8f885f5d2dbe8c300a03fa19
 ```
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
+execution reverted: Only identities with role Physician or Hospital have approvals to be revoked
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Dritten für einen Arzt:
 ```
-Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+Transaction hash: 0x463d7d52fd2abbee8dcf905df9ffb394dcfdb812c2303f478f9682c2ec86e84d
 ```
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Patient revoke approvals."
+execution reverted: Only identities with role Patient revoke approvals.
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Arzt für einen Dritten:
 ```
-Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+Transaction hash: 0xf198b842c137f12c1b8c79d320fa2bfb5538b1fcc05352e623b24194ab9d0bed
 ```
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
+execution reverted: Only identities with role Physician or Hospital have approvals to be revoked
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Arzt für einen Patienten:
 ```
-Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+Transaction hash: 0x671657ea0ca02791b17dff9dbe312548f841a572904e94a00d4f451121d12436
 ```
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
+execution reverted: Only identities with role Physician or Hospital have approvals to be revoked
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Patienten für einen Dritten:
 ```
-Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+Transaction hash: 0x2989dca036a8f0c51def8c6f79903e2243459ce02dd3214053fd4dfcb740b1bf
 ```
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "Only identities with role Physician or Hospital have approvals to be revoked"
+execution reverted: Only identities with role Physician or Hospital have approvals to be revoked
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Patienten für einen Arzt:
 ```
-Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+Transaction hash: 0x72716bd402c84153a452dd8114925cd6e0ec6f92a8f4c2ce8314c93322e177fd
 ```
 ```json
 {
-	"address _identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+	"address _identityAddress": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e"
 }
 ```
 
 Versuch der Widerrufung der Genehmigung durch einen Patienten für eine Klinik:
 ```
-Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc17d20
+Transaction hash: 0xf1179978db1a080819f7def810c9923829784bd966cc0fffc24dd51f2b216e70
 ```
 ```json
 {
-	"address _identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+	"address _identityAddress": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac"
 }
 ```
 
@@ -1050,7 +1045,7 @@ Transaction hash: 0x3ca1feb7134b86e925daa44d4fbfaca6397e79e64d6b55c7bc849785bdc1
 
 Die Transaktionskosten für die erfolgreiche Transaktion, der Anfrage einer Genehmigung durch einen Arzt an einen Patienten, gemäss Logs:
 ```
-transaction cost: 30052
+transaction cost: 30052 gas
 ```
 
 Emittierter Event, bei der Anfrage einer Genehmigung durch einen Arzt an einen Patienten:
@@ -1072,7 +1067,7 @@ Emittierter Event, bei der Anfrage einer Genehmigung durch einen Arzt an einen P
 
 Die Transaktionskosten für die erfolgreiche Transaktion, der Anfrage einer Genehmigung durch eine Klinik an einen Patienten, gemäss Logs:
 ```
-transaction cost: 30270
+transaction cost: 30270 gas
 ```
 
 Emittierter Event, bei der Anfrage einer Genehmigung durch eine Klinik an einen Patienten:
@@ -1096,7 +1091,7 @@ Emittierter Event, bei der Anfrage einer Genehmigung durch eine Klinik an einen 
 
 Die Transaktionskosten für die erfolgreiche Transaktion, der Erteilung einer Genehmigung durch einen Patienten an einen Arzt, gemäss Logs:
 ```
-transaction cost: 50024
+transaction cost: 50024 gas
 ```
 
 Emittierter Event, bei der Erteilung einer Genehmigung durch einen Patienten an einen Arzt:
@@ -1118,7 +1113,7 @@ Emittierter Event, bei der Erteilung einer Genehmigung durch einen Patienten an 
 
 Die Transaktionskosten für die erfolgreiche Transaktion, der Erteilung einer Genehmigung durch einen Patienten an eine Klinik, gemäss Logs:
 ```
-transaction cost: 50261
+transaction cost: 50261 gas
 ```
 
 Emittierter Event, bei der Erteilung einer Genehmigung durch einen Patienten an eine Klinik:
@@ -1142,21 +1137,21 @@ Emittierter Event, bei der Erteilung einer Genehmigung durch einen Patienten an 
 
 Die Transaktionskosten für die erfolgreiche Transaktion, der Widerrufung einer Genehmigung durch einen Patienten an einen Arzt, gemäss Logs:
 ```
-transaction cost: 333260
+transaction cost: 27997 gas
 ```
 
 Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten an einen Arzt:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x97a94ee714dc2c5c1889f6fe8e8909a95e0307c4b272c7df374bf76582099f87",
 		"event": "ApprovalRevoked",
 		"args": {
-			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"1": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
-			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"_identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+			"0": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"1": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e",
+			"_patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"_identityAddress": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e"
 		}
 	}
 ]
@@ -1164,21 +1159,21 @@ Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten a
 
 Die Transaktionskosten für die erfolgreiche Transaktion, der Widerrufung einer Genehmigung durch einen Patienten an eine Klinik, gemäss Logs:
 ```
-transaction cost: 333260
+transaction cost: 28234 gas
 ```
 
 Emittierter Event, bei der Widerrufung einer Genehmigung durch einen Patienten an eine Klinik:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0x97a94ee714dc2c5c1889f6fe8e8909a95e0307c4b272c7df374bf76582099f87",
 		"event": "ApprovalRevoked",
 		"args": {
-			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"1": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
-			"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-			"_identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"
+			"0": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"1": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac",
+			"_patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+			"_identityAddress": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac"
 		}
 	}
 ]
@@ -1204,15 +1199,15 @@ Der intelligente Vertrag soll die Genehmigungen in einer Tabelle erfassen, welch
 Folgende Genehmigungen wurden auf dem intelligenten Vertrag registriert:
 ```json
 	"Genehmigung 1": {
-		"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-		"_identityAddress": "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
-		"bool": false
+		"_patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+		"_identityAddress": "0xa439530c1880e4abb63e5F142F138EC1c1836b8e",
+		"bool": true
 	}
 
 	"Genehmigung 2": {
-		"_patientAddress": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
-		"_identityAddress": "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
-		"bool": true
+		"_patientAddress": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
+		"_identityAddress": "0x8d88ABaA91Cc1a023DbCEe0EbC435f0e11f7a3Ac",
+		"bool": false
 	}
 ```
 
@@ -1222,21 +1217,21 @@ Der aktuelle Status der Genehmigungen kann aus der Genehmigungs-Tabelle abgelese
 
 ### **Output-Daten**
 
-Abfrage der Genehmigung zwischen dem Patienten (0x4B2..) und dem Arzt (0x787):
-```json
-{
-	"0": "bool: false"
-}
-```
-
-Abfrage der Genehmigung zwischen dem Patienten (0x4B2..) und der Klinik (0x617):
+Abfrage der Genehmigung zwischen dem Patienten (0x3D1..) und dem Arzt (0xa43):
 ```json
 {
 	"0": "bool: true"
 }
 ```
 
-Abfrage einer Genehmigung, welche nicht im Genehmigungsprozess registriert wurde, zwischen zwei nicht auf der Blockchain registrierten Konten. Konto (0x17F) und Konto (0x5c6).
+Abfrage der Genehmigung zwischen dem Patienten (0x3D1..) und der Klinik (0x8d8):
+```json
+{
+	"0": "bool: false"
+}
+```
+
+Abfrage einer Genehmigung, welche nicht im Genehmigungsprozess registriert wurde, zwischen zwei nicht auf der Blockchain registrierten Konten. Konto (0x80646f9D216A0651DFfda914e658Df42835066AD) und Konto (0x4C8b68b1F6C9031B3F3e4C6Cc5d207AB58AFe44B).
 ```json
 {
 	"0": "bool: false"
@@ -1245,7 +1240,7 @@ Abfrage einer Genehmigung, welche nicht im Genehmigungsprozess registriert wurde
 
 ### **Logs/Events**
 
-Keine Logs oder Events bei diesem Testfall.
+Keine Logs oder Events bei diesem Testfall. Die externe Abfrage der Genehmigungs-Tabelle generiert keine Transaktionskosten.
 
 ### **Resultat**
 
@@ -1264,15 +1259,15 @@ Innerhalb des intelligenten Vertrags kann nach allen Befunden (Tokens) eines spe
 
 ### **Input-Daten**
 
-Es existieren zwei Tokens für den Patienten (0x4B2..):
+Es existieren zwei Tokens für den Patienten (0x3D1..):
 ```json
 	"Token 1": {
-		"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"address to": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 		"string uri": "QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag"
 	}
 
 	"Token 2": {
-		"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"address to": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 		"string uri": "QmabPUhqttoLfRueCjRroCMFUNCaGcmWmKWfffMkzx9dAE"
 	}
 ```
@@ -1285,7 +1280,7 @@ Es kann nach allen Befunden (Tokens) zu einem Patienten gefiltert werden und die
 
 **Summe aller Token**
 
-Zuerst wird mit der Funktion `balanceOf` angezeigt, wie viele Token die spezifische Adresse des Patienten (0x4B2..) besitzt:
+Zuerst wird mit der Funktion `balanceOf` angezeigt, wie viele Token die spezifische Adresse des Patienten (0x3D1..) besitzt:
 ```json
 {
 	"0": "uint256: 2"
@@ -1312,8 +1307,7 @@ Index-Position 1
 
 Index-Position 2
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "ERC721Enumerable: owner index out of bounds"
+execution reverted: ERC721Enumerable: owner index out of bounds
 ```
 
 **Filtern nach der Token-URI**
@@ -1386,11 +1380,11 @@ Token-URI 1
 
 ### **Logs/Events**
 
-Keine Logs oder Events bei diesem Testfall.
+Keine Logs oder Events bei diesem Testfall. Die externe Abfrage der Token-Informationen generiert keine Transaktionskosten.
 
 ### **Resultat**
 
-Es war möglich nach den einzelnen Tokens des Patienten (0x4B2..) zu filtern und die entsprechenden Token-URIs abzurufen. In diesem Testing wurden die einzelnen Funktionen, welche dazu nötig sind, separat durchgeführt und dokumentiert. Es wäre jedoch möglich die Abfrage der einzelnen Funktionen durch Code zu automatisieren (z.B. JavaScript). Das IPFS-Gateway ausserhalb der Blockchain gibt ebenfalls, gegeben der Token-URIs, die korrekten Metadaten-Files zurück.
+Es war möglich nach den einzelnen Tokens des Patienten (0x3D1..) zu filtern und die entsprechenden Token-URIs abzurufen. In diesem Testing wurden die einzelnen Funktionen, welche dazu nötig sind, separat durchgeführt und dokumentiert. Es wäre jedoch möglich die Abfrage der einzelnen Funktionen durch Code zu automatisieren (z.B. JavaScript). Das IPFS-Gateway ausserhalb der Blockchain gibt ebenfalls, gegeben der Token-URIs, die korrekten Metadaten-Files zurück.
 
 - [x] Bestanden
 - [ ] Fehlgeschlagen
@@ -1405,18 +1399,19 @@ Der Patient soll in der Lage sein, seine eigenen Befunde (Tokens) zu löschen.
 
 ### **Input-Daten**
 
-Es existieren zwei Tokens für den Patienten (0x4B2..):
+Es existieren zwei Tokens für den Patienten (0x3D1..):
 ```json
 	"Token 1": {
-		"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"address to": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 		"string uri": "QmZ2ZmZisSGEZLqgVahHKAEavwTvZS7FXxXvVKwQjTkGag"
 	}
 
 	"Token 2": {
-		"address to": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+		"address to": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 		"string uri": "QmabPUhqttoLfRueCjRroCMFUNCaGcmWmKWfffMkzx9dAE"
 	}
 ```
+
 Der zweite Token sollte vernichtet werden.
 
 ### **Erwartetes Ergebnis**
@@ -1425,13 +1420,15 @@ Der Patient kann seine eigenen registrierten Befunde (Tokens) vernichten.
 
 ### **Output-Daten**
 
-Der Versuch, den Token durch einen Arzt (0x787..) zu löschen:
+Der Versuch, den Token durch einen Arzt (0xa43..) zu löschen:
 ```
-The transaction has been reverted to the initial state.
-Reason provided by the contract: "ERC721: caller is not token owner or approved"
+Transaction hash: 0x1b280438e4ebb90b7aeecaa59aee2151be52aa3f34e6884dc6798cdb27147049
+```
+```
+execution reverted: ERC721: caller is not token owner or approved
 ```
 
-Der Versuch, den Token durch den Patient selbst (0x4B2..) zu löschen:
+Der Versuch, den Token durch den Patient selbst (0x3D1..) zu löschen:
 ```json
 {
 	"uint256 tokenId": "1"
@@ -1440,18 +1437,23 @@ Der Versuch, den Token durch den Patient selbst (0x4B2..) zu löschen:
 
 ### **Logs/Events**
 
+Die Transaktionskosten für die erfolgreiche Transaktion gemäss Logs:
+```
+transaction cost: 63840 gas
+```
+
 Emittierter Event, dass der Token vernichtet wurde:
 ```json
 [
 	{
-		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"from": "0x355d02042a0a159052c91EAe35A8ba566228E6CE",
 		"topic": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
 		"event": "Transfer",
 		"args": {
-			"0": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"0": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 			"1": "0x0000000000000000000000000000000000000000",
 			"2": "1",
-			"from": "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+			"from": "0x3D1DF3DcaaB8a521C4141b0a77Bc399811EA0665",
 			"to": "0x0000000000000000000000000000000000000000",
 			"tokenId": "1"
 		}
