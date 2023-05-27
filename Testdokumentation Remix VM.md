@@ -1,6 +1,6 @@
 # **Testdokumentation Remix VM**
 
-In diesem Markdown-Dokument werden die Ergebnisse der Tests auf der lokalen Remix VM dokumentiert. Der Test auf der lokalen VM ist gemäss dem beschriebenen Testvorgehen der erste Schritt bei der Validierung des entwickelten Artefakts. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 7.4 beschrieben.
+In diesem Markdown-Dokument werden die Ergebnisse der Tests auf der lokalen Remix VM dokumentiert. Der Test auf der lokalen VM ist gemäss dem beschriebenen Testvorgehen der erste Schritt bei der Validierung des entwickelten Artefakts. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 5.4 beschrieben.
 
 ### **Inhaltsverzeichnis zu den Testfällen**
 1. [Testfall ID 0](#testfall0)
@@ -25,7 +25,7 @@ Der Testfall 0 ist nicht im Anhang der Arbeit beschrieben und stellt auch keinen
 
 ### **Input-Daten**
 
-Alle intelligenten Verträge gemäss beschriebener technischer Implementierung in Kapitel 7.3:
+Alle intelligenten Verträge gemäss beschriebener technischer Implementierung in Kapitel 5.3:
 
 1.	ImageShare.sol -> (Hauptvertrag)
 	1.	IdentityManagement.sol

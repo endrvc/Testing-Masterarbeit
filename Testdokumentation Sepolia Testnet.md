@@ -1,6 +1,6 @@
 # **Testdokumentation Sepolia Testnet**
 
-In diesem Markdown-Dokument werden die Ergebnisse der Tests auf dem öffentlichen Sepolia Testnet dokumentiert. Der Test auf dem Ethereum Testnetzwerk ist gemäss dem beschriebenen Testvorgehen der zweite Schritt bei der Validierung des entwickelten Artefakts, nach den bereits durchgeführten Tests auf der lokalen Remix Blockchain. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 7.4 beschrieben.
+In diesem Markdown-Dokument werden die Ergebnisse der Tests auf dem öffentlichen Sepolia Testnet dokumentiert. Der Test auf dem Ethereum Testnetzwerk ist gemäss dem beschriebenen Testvorgehen der zweite Schritt bei der Validierung des entwickelten Artefakts, nach den bereits durchgeführten Tests auf der lokalen Remix Blockchain. Die Testfälle, welche durchlaufen werden, sind im Anhang der Arbeit dokumentiert, sowie im Testansatz im Kapitel 5.4 beschrieben.
 
 Bei diesen Tests werden die entsprechenden Block- und Transaktionsreferenzen ebenfalls dokumentiert. Mithilfe des Blockchain-Explorer [Etherscan](https://sepolia.etherscan.io) ist es für jedermann möglich die Transaktionsdetails einzusehen, nachzuvollziehen und nachzuprüfen. 
 
@@ -27,7 +27,7 @@ Der Testfall 0 ist nicht im Anhang der Arbeit beschrieben und stellt auch keinen
 
 ### **Input-Daten**
 
-Alle intelligenten Verträge gemäss beschriebener technischer Implementierung in Kapitel 7.3:
+Alle intelligenten Verträge gemäss beschriebener technischer Implementierung in Kapitel 5.3:
 
 1.	ImageShare.sol -> (Hauptvertrag)
 	1.	IdentityManagement.sol
